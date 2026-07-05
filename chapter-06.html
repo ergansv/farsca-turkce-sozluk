@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bölüm 06: Olumsuz, Soru ve Diyalog — Farsça–Türkçe Sözlük</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600&family=Noto+Naskh+Arabic:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --gold: #c9a84c; --gold-lt: #e8c97a; --gold-dk: #9a6f22;
+  --teal: #0d4f4f; --teal-lt: #145f5f; --teal-dk: #082d2d;
+  --cream: #fdf8f0; --cream-dk: #f5ede0;
+  --ink: #1a1410; --ink-soft: #4a3728; --muted: #8a7465;
+  --white: #fff; --radius: 10px;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; background: var(--cream); color: var(--ink); line-height: 1.7; }
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(8,45,45,.97); backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(201,168,76,.25);
+  padding: .9rem 2rem;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo { font-family: 'Noto Naskh Arabic', serif; color: var(--gold); font-size: 1.1rem; text-decoration: none; }
+.nav-title { font-size: .72rem; color: rgba(255,255,255,.5); letter-spacing: .08em; text-transform: uppercase; }
+.nav-right { display: flex; align-items: center; gap: 1rem; }
+.nav-back {
+  color: rgba(255,255,255,.7); text-decoration: none; font-size: .8rem;
+  font-weight: 500; letter-spacing: .05em; text-transform: uppercase;
+  transition: color .2s;
+}
+.nav-back:hover { color: var(--gold-lt); }
+.chapter-nav { display: flex; gap: .5rem; }
+.ch-btn {
+  background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15);
+  color: rgba(255,255,255,.7); border-radius: 6px; padding: .35rem .85rem;
+  font-size: .78rem; font-weight: 600; text-decoration: none; transition: all .2s;
+  cursor: pointer;
+}
+.ch-btn:hover { background: rgba(201,168,76,.2); border-color: rgba(201,168,76,.4); color: var(--gold-lt); }
+.ch-btn.disabled { opacity: .3; pointer-events: none; }
+.hero-ch {
+  background: linear-gradient(135deg, var(--teal-dk), var(--teal));
+  padding: 3.5rem 2rem 2.5rem;
+  text-align: center;
+}
+.ch-num { font-size: .75rem; font-weight: 700; letter-spacing: .15em; color: var(--gold-lt); text-transform: uppercase; margin-bottom: .8rem; }
+.ch-title { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem,4vw,2.8rem); font-weight: 900; color: var(--white); }
+.ch-title-fa { font-family: 'Noto Naskh Arabic', serif; font-size: 1.4rem; color: rgba(255,255,255,.6); margin-top: .4rem; direction: rtl; }
+.content { max-width: 900px; margin: 3rem auto; padding: 0 2rem 5rem; }
+.section-head {
+  font-size: .75rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--gold-dk); background: var(--cream-dk);
+  padding: .6rem 1.2rem; border-radius: 8px; margin: 2rem 0 1rem;
+  border-left: 3px solid var(--gold);
+}
+.word-table { width: 100%; border-collapse: collapse; margin-bottom: .5rem; }
+.word-table th {
+  background: var(--teal); color: var(--white);
+  font-size: .7rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+  padding: .6rem 1.1rem; text-align: left;
+}
+.word-table th:last-child { text-align: right; }
+.word-table td {
+  padding: .65rem 1.1rem; border-bottom: 1px solid var(--cream-dk);
+  font-size: .9rem; color: var(--ink-soft);
+  vertical-align: middle;
+}
+.word-table tr:last-child td { border-bottom: none; }
+.word-table tr:hover td { background: var(--white); }
+.td-fa {
+  font-family: 'Noto Naskh Arabic', serif; font-size: 1.15rem; font-weight: 600;
+  color: var(--teal); direction: rtl; text-align: right;
+}
+.td-note { font-size: .8rem; color: var(--muted); font-style: italic; }
+.text-block {
+  background: var(--white); border: 1px solid var(--cream-dk);
+  border-radius: var(--radius); padding: 1.2rem 1.5rem;
+  font-size: .9rem; color: var(--ink-soft); line-height: 1.8;
+  margin: .5rem 0;
+}
+.card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px,1fr)); gap: .75rem; margin: 1rem 0; }
+.card {
+  background: var(--white); border: 1px solid var(--cream-dk);
+  border-radius: var(--radius); padding: 1rem 1.2rem;
+  display: flex; flex-direction: column; align-items: center; gap: .4rem;
+  transition: border-color .2s, transform .2s;
+  text-align: center;
+}
+.card:hover { border-color: rgba(201,168,76,.4); transform: translateY(-2px); }
+.card-fa { font-family: 'Noto Naskh Arabic', serif; font-size: 1.5rem; font-weight: 700; color: var(--teal); direction: rtl; }
+.card-tr { font-size: .85rem; color: var(--ink-soft); font-weight: 500; }
+.card-note { font-size: .72rem; color: var(--muted); }
+.search-wrap { position: relative; margin-bottom: 1.5rem; }
+.search-icon { position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--muted); pointer-events: none; }
+#word-search {
+  width: 100%; padding: .8rem 1rem .8rem 2.8rem;
+  border: 1.5px solid var(--cream-dk); border-radius: 10px;
+  font-size: .9rem; font-family: 'Inter', sans-serif;
+  background: var(--white); outline: none; transition: border-color .2s;
+}
+#word-search:focus { border-color: var(--teal); }
+.count-badge { position: absolute; right: 1rem; top: 50%; transform: translateY(-50%); font-size: .72rem; color: var(--muted); font-weight: 600; }
+.row-hidden { display: none !important; }
+@media(max-width:600px) { .card-grid { grid-template-columns: 1fr 1fr; } }
+
+    /* ─── BACK BUTTON ─── */
+    #back-btn {
+      position: fixed;
+      bottom: 2rem; left: 2rem;
+      display: flex; align-items: center; gap: .5rem;
+      background: var(--teal);
+      border: 1px solid rgba(201,168,76,.35);
+      color: var(--white);
+      font-size: .8rem; font-weight: 600;
+      letter-spacing: .06em; text-transform: uppercase;
+      padding: .65rem 1.2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      box-shadow: 0 4px 16px rgba(0,0,0,.25);
+      transition: background .2s, transform .2s, box-shadow .2s;
+      z-index: 99;
+    }
+    #back-btn:hover {
+      background: var(--gold-dk);
+      transform: translateX(-3px);
+      box-shadow: 0 6px 24px rgba(0,0,0,.3);
+    }
+    #back-btn .arrow { font-size: 1rem; }
+
+  
+    /* ─── FLOATING CHAPTER ARROWS ─── */
+    .ch-arrow-btn {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 48px; height: 48px;
+      background: var(--teal);
+      border: 1px solid rgba(201,168,76,.35);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--white);
+      font-size: 1.3rem;
+      text-decoration: none;
+      box-shadow: 0 4px 18px rgba(0,0,0,.28);
+      transition: background .2s, transform .2s, box-shadow .2s, opacity .2s;
+      z-index: 98;
+      opacity: .75;
+    }
+    .ch-arrow-btn:hover {
+      background: var(--gold-dk);
+      opacity: 1;
+      box-shadow: 0 6px 28px rgba(0,0,0,.35);
+    }
+    .ch-arrow-prev { left: .9rem; }
+    .ch-arrow-prev:hover { transform: translateY(-50%) translateX(-3px); }
+    .ch-arrow-next { right: .9rem; }
+    .ch-arrow-next:hover { transform: translateY(-50%) translateX(3px); }
+    .ch-arrow-btn.disabled { opacity: .2; pointer-events: none; }
+    @media(max-width:900px) {
+      .ch-arrow-btn { width: 40px; height: 40px; font-size: 1.05rem; opacity: .6; }
+      .ch-arrow-prev { left: .4rem; }
+      .ch-arrow-next { right: .4rem; }
+    }
+
+  
+    /* ─── DICTIONARY BADGES ─── */
+    .dict-refs { display: inline-flex; gap: 4px; margin-right: 6px; vertical-align: middle; }
+    .dict-link {
+      font-family: 'Inter', sans-serif;
+      font-size: .58rem; font-weight: 700; letter-spacing: .04em;
+      padding: 2px 5px; border-radius: 4px;
+      text-decoration: none; line-height: 1;
+      transition: opacity .15s;
+    }
+    .dict-link:hover { opacity: .75; }
+    .dict-link.dh { background: #1a5f5f; color: #e8c97a; }
+    .dict-link.mn { background: #7a3f00; color: #f5ede0; }
+
+    /* ─── DEFINITION TOOLTIP ─── */
+    .def-wrap { position: relative; display: inline-block; }
+    .def-icon {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 16px; height: 16px; border-radius: 50%;
+      background: rgba(201,168,76,.2); border: 1px solid rgba(201,168,76,.5);
+      color: #9a6f22; font-size: .62rem; font-weight: 700;
+      cursor: help; margin-right: 4px; flex-shrink: 0;
+      font-family: 'Inter', sans-serif; font-style: normal;
+      transition: background .2s;
+    }
+    .def-icon:hover { background: rgba(201,168,76,.45); }
+    .def-box {
+      visibility: hidden; opacity: 0;
+      position: absolute; bottom: 130%; left: 50%; transform: translateX(-50%);
+      min-width: 260px; max-width: 320px;
+      background: #082d2d; border: 1px solid rgba(201,168,76,.3);
+      border-radius: 10px; padding: .85rem 1rem;
+      z-index: 200; pointer-events: none;
+      transition: opacity .2s, visibility .2s;
+      box-shadow: 0 8px 28px rgba(0,0,0,.4);
+    }
+    .def-box::after {
+      content: '';
+      position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+      border: 6px solid transparent; border-top-color: rgba(201,168,76,.3);
+    }
+    .def-wrap:hover .def-box { visibility: visible; opacity: 1; }
+    .def-source {
+      font-size: .65rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+      color: #e8c97a; margin-bottom: .35rem; font-family: 'Inter', sans-serif;
+    }
+    .def-text {
+      font-family: 'Noto Naskh Arabic', serif; font-size: .92rem;
+      color: rgba(255,255,255,.85); line-height: 1.65; direction: rtl; text-align: right;
+    }
+
+  </style>
+</head><body>
+<nav>
+  <div>
+    <a class="nav-logo" href="index.html">فرهنگ فارسی و ترکی</a>
+    <div class="nav-title">Farsça–Türkçe Sözlük · 2026</div>
+  </div>
+  <div class="nav-right">
+    <a class="nav-back" href="index.html">← Ana Sayfa</a>
+    <div class="chapter-nav">
+      <a class="ch-btn" href="chapter-05.html">‹ Önceki</a>
+      <a class="ch-btn" href="chapter-07.html">Sonraki ›</a>
+    </div>
+  </div>
+</nav>
+<div class="hero-ch">
+  <div class="ch-num">Bölüm 06 · 67 kelime</div>
+  <div class="ch-title">Olumsuz, Soru ve Diyalog</div>
+  
+</div><div style="max-width:900px;margin:2rem auto 0;padding:0 2rem;">
+  <div class="search-wrap">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="wsearch" placeholder="Kelime ara..." autocomplete="off"/>
+    <span class="count-badge" id="wcnt"></span>
+  </div>
+</div>
+<div class="content">
+<div class="text-block">Farsçada fiili olumsuz yapmak oldukça basittir: Fiilin en başına bir &quot;Ne&quot; (نـ) eki getirilir.</div>
+<div class="text-block">Geçmiş Zamanda: Fiilin başına doğrudan &quot;ne-&quot; eklenir.</div>
+<div class="text-block">Şimdiki Zamanda: &quot;Mî&quot; (می) ön ekinin önüne &quot;ne-&quot; eklenir ve &quot;nemî-&quot; (نمی) olur.</div>
+<div class="section-head">1. OLUMSUZ FİİL YAPISI (Nâfiye)</div>
+<table class="word-table"><thead><tr><th>Türkçe</th><th>Farsça / Dari</th><th>Not</th></tr></thead><tbody>
+<tr class="wr"><td>Zaman</td><td>Olumsuz</td><td>Olumlu</td></tr>
+<tr class="wr"><td>Geçmiş</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=رفتم (Reftem)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=رفتم (Reftem)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>رفتم (Reftem)</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=نرفتم&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=نرفتم&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>نرفتم</td></tr>
+<tr class="wr"><td>Geçmiş</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=خریدید (Harîdîd)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=خریدید (Harîdîd)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>خریدید (Harîdîd)</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=نخریدید&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=نخریدید&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>نخریدید</td></tr>
+<tr class="wr"><td>Şimdiki</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=می‌روم (Mî-revem)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=می‌روم (Mî-revem)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>می‌روم (Mî-revem)</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=نمی‌روم&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=نمی‌روم&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>نمی‌روم</td></tr>
+<tr class="wr"><td>Şimdiki</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=می‌خواند (Mî-hâned)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=می‌خواند (Mî-hâned)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>می‌خواند (Mî-hâned)</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=نمی‌خواند&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=نمی‌خواند&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>نمی‌خواند</td></tr>
+<tr class="wr"><td>Gelecek*</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=خواهم رفت&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=خواهم رفت&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>خواهم رفت</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=نخواهم رفت&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=نخواهم رفت&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>نخواهم رفت</td></tr>
+</tbody></table>
+<div class="text-block">Farsçada soru sormanın iki ana yolu vardır:</div>
+<div class="text-block">A) &quot;Âyâ&quot; (آیا) Edatı İle Soru</div>
+<div class="text-block">Cümlenin en başına &quot;Âyâ&quot; (Acaba/Mı-mi) kelimesi getirilir. Cümle yapısı değişmez.</div>
+<div class="section-head">2. SORU CÜMLELERİ (Suâlî)</div>
+<table class="word-table"><thead><tr><th>Türkçe</th><th>Farsça / Dari</th><th>Not</th></tr></thead><tbody>
+<tr class="wr"><td>Türkçe Soru</td><td>Okunuşu</td><td>Farsça Yazılışı</td></tr>
+<tr class="wr"><td>Gittin mi?</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=آیا رفتی؟&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=آیا رفتی؟&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>آیا رفتی؟</td><td>Âyâ reftî?</td></tr>
+<tr class="wr"><td>Kitap okuyor mu?</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=آیا کتاب می‌خواند؟&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=آیا کتاب می‌خواند؟&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>آیا کتاب می‌خواند؟</td><td>Âyâ kitâb mî-hâned?</td></tr>
+<tr class="wr"><td>Gelecekler mi?</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=آیا خواهند آمد؟&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=آیا خواهند آمد؟&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>آیا خواهند آمد؟</td><td>Âyâ hâhend âmed?</td></tr>
+</tbody></table>
+<div class="text-block">B) Soru Zamirleri İle Soru</div>
+<div class="text-block">Cümlenin içine soru kelimesi yerleştirilir.</div>
+<table class="word-table"><thead><tr><th>Türkçe</th><th>Farsça / Dari</th><th>Not</th></tr></thead><tbody>
+<tr class="wr"><td>Soru Kelimesi</td><td>Okunuşu</td><td>Farsça</td></tr>
+<tr class="wr"><td>Kim?</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=کی / چه کسی&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=کی / چه کسی&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>کی / چه کسی</td><td>Kî?</td></tr>
+<tr class="wr"><td>Ne?</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=چه / چی&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=چه / چی&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>چه / چی</td><td>Çe?</td></tr>
+<tr class="wr"><td>Nerede?</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=کجا&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=کجا&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>کجا</td><td>Kocâ?</td></tr>
+<tr class="wr"><td>Nasıl?</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=چطور / چگونه&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=چطور / چگونه&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>چطور / چگونه</td><td>Çetor?</td></tr>
+<tr class="wr"><td>Ne zaman?</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=کی&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=کی&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>کی</td><td>Key?</td></tr>
+</tbody></table>
+<div class="text-block">Kitabına bir &quot;Pratik Uygulama&quot; köşesi eklemek istersen şu mini diyalog çok öğreticidir:</div>
+<div class="text-block">Soru: Âyâ tu ders mî-hânî? (آیا تو درس می‌خوانی؟) - Sen ders çalışıyor musun?</div>
+<div class="text-block">Cevap (Olumlu): Belî, men ders mî-hânem. (بله، من درس می‌خوانم) - Evet, ben ders çalışıyorum.</div>
+<div class="text-block">Cevap (Olumsuz): Ne, men dars ne-mî-hânem. (نه، من درس نمی‌خوانم) - Hayır, ben ders çalışmıyorum.</div>
+<div class="text-block">Farsçada İzafet (İzâfe), kelimeleri birbirine bağlayarak isim veya sıfat tamlaması kurmamızı sağlayan en temel dil bilgisi kuralıdır.</div>
+<div class="section-head">Farsça En Sık Kullanılan 50 Fiil Tablosu</div>
+<table class="word-table"><thead><tr><th>Türkçe</th><th>Farsça / Dari</th><th>Not</th></tr></thead><tbody>
+<tr class="wr"><td>Mastar (Geçmiş Kök)</td><td>Okunuşu (Mastar / Kök)</td><td>Geniş Zaman Kökü</td></tr>
+<tr class="wr"><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Amaden (آمدن)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Amaden (آمدن)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Amaden (آمدن)</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Â / Ây (آ)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Â / Ây (آ)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Â / Ây (آ)</td><td>Âmeden / Â</td></tr>
+<tr class="wr"><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Reften (رفتن)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Reften (رفتن)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Reften (رفتن)</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Rav (رو)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Rav (رو)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Rav (رو)</td><td>Reften / Rev</td></tr>
+<tr class="wr"><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Kerden (کردن)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Kerden (کردن)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Kerden (کردن)</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Kon (کن)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Kon (کن)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Kon (کن)</td><td>Kerden / Kon</td></tr>
+<tr class="wr"><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Dâşten (داشتن)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Dâşten (داشتن)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Dâşten (داشتن)</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Dâr (دار)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Dâr (دار)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Dâr (دار)</td><td>Dâşten / Dâr</td></tr>
+<tr class="wr"><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Goften (گفتن)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Goften (گفتن)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Goften (گفتن)</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Gû (گو)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Gû (گو)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Gû (گو)</td><td>Goften / Gû</td></tr>
+<tr class="wr"><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Dîden (دیدن)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Dîden (دیدن)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Dîden (دیدن)</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Bîn (بین)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Bîn (بین)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Bîn (بین)</td><td>Dîden / Bîn</td></tr>
+<tr class="wr"><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Şonîden (شنیدن)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Şonîden (شنیدن)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Şonîden (شنیدن)</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Şonev (شنو)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Şonev (شنو)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Şonev (شنو)</td><td>Şınîden / Şonev</td></tr>
+<tr class="wr"><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Horden (خوردن)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Horden (خوردن)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Horden (خوردن)</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Hor (خور)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Hor (خور)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Hor (خور)</td><td>Horden / Hor</td></tr>
+<tr class="wr"><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Nûşîden (نوشیدن)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Nûşîden (نوشیدن)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Nûşîden (نوشیدن)</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Nûş (نوش)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Nûş (نوش)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Nûş (نوش)</td><td>Nûşîden / Nûş</td></tr>
+<tr class="wr"><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Hâsten (خواستن)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Hâsten (خواستن)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Hâsten (خواستن)</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Hâh (خواه)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Hâh (خواه)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Hâh (خواه)</td><td>Hâsten / Hâh</td></tr>
+<tr class="wr"><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Dânisten (دانستن)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Dânisten (دانستن)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Dânisten (دانستن)</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Dân (دان)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Dân (دان)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Dân (دان)</td><td>Dânisten / Dân</td></tr>
+<tr class="wr"><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Tevânisten (توانستن)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Tevânisten (توانستن)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Tevânisten (توانستن)</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Tevân (توان)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Tevân (توان)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Tevân (توان)</td><td>Tevânisten / Tevân</td></tr>
+<tr class="wr"><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Hânden (خواندن)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Hânden (خواندن)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Hânden (خواندن)</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Hân (خوان)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Hân (خوان)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Hân (خوان)</td><td>Hânden / Hân</td></tr>
+<tr class="wr"><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Neveşten (نوشتن)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Neveşten (نوشتن)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Neveşten (نوشتن)</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Nevîs (نویس)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Nevîs (نویس)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Nevîs (نویس)</td><td>Nevişten / Nevîs</td></tr>
+<tr class="wr"><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Harîden (خریدن)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Harîden (خریدن)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Harîden (خریدن)</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Har (خر)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Har (خر)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Har (خر)</td><td>Harîden / Har</td></tr>
+<tr class="wr"><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Furûhten (فروختن)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Furûhten (فروختن)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Furûhten (فروختن)</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Furûş (فروش)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Furûş (فروش)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Furûş (فروش)</td><td>Furûhten / Furûş</td></tr>
+<tr class="wr"><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Dâden (دادن)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Dâden (دادن)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Dâden (دادن)</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Deh (ده)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Deh (ده)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Deh (ده)</td><td>Dâden / Deh</td></tr>
+<tr class="wr"><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Gereften (گرفتن)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Gereften (گرفتن)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Gereften (گرفتن)</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Gîr (گیر)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Gîr (گیر)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Gîr (گیر)</td><td>Gereften / Gîr</td></tr>
+<tr class="wr"><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Zeden (زدن)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Zeden (زدن)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Zeden (زدن)</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Zen (زن)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Zen (زن)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Zen (زن)</td><td>Zeden / Zen</td></tr>
+<tr class="wr"><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Şoden (شدن)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Şoden (شدن)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Şoden (شدن)</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Şev (شو)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Şev (شو)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Şev (شو)</td><td>Şoden / Şev</td></tr>
+<tr class="wr"><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Averden (آوردن)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Averden (آوردن)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Averden (آوردن)</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Âver (آور)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Âver (آور)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Âver (آور)</td><td>Averden / Âver</td></tr>
+<tr class="wr"><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Borden (بردن)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Borden (بردن)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Borden (بردن)</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Ber (بر)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Ber (بر)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Ber (بر)</td><td>Borden / Ber</td></tr>
+<tr class="wr"><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Neşesten (نشستن)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Neşesten (نشستن)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Neşesten (نشستن)</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Nişîn (نشین)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Nişîn (نشین)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Nişîn (نشین)</td><td>Neşesten / Nişîn</td></tr>
+<tr class="wr"><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Îstâden (ایستادن)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Îstâden (ایستادن)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Îstâden (ایستادن)</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Îst (ایست)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Îst (ایست)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Îst (ایست)</td><td>Îstâden / Îst</td></tr>
+<tr class="wr"><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Hâbîden (خوابیدن)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Hâbîden (خوابیدن)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Hâbîden (خوابیدن)</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Hâb (خواب)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Hâb (خواب)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Hâb (خواب)</td><td>Hâbîden / Hâb</td></tr>
+<tr class="wr"><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Zîsten (زیستن)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Zîsten (زیستن)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Zîsten (زیستن)</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Zî (زی)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Zî (زی)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Zî (زی)</td><td>Zîsten / Zî</td></tr>
+<tr class="wr"><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Porsîden (پرسیدن)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Porsîden (پرسیدن)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Porsîden (پرسیدن)</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Pors (پرس)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Pors (پرس)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Pors (پرس)</td><td>Porsîden / Pors</td></tr>
+<tr class="wr"><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Dovîden (دویدن)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Dovîden (دویدن)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Dovîden (دویدن)</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Dev (دو)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Dev (دو)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Dev (دو)</td><td>Dovîden / Dev</td></tr>
+<tr class="wr"><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Pohden (پختن)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Pohden (پختن)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Pohden (پختن)</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Pez (پز)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Pez (پز)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Pez (پز)</td><td>Pohden / Pez</td></tr>
+<tr class="wr"><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Şosten (شستن)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Şosten (شستن)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Şosten (شستن)</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Şov (شو)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Şov (شو)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Şov (شو)</td><td>Şosten / Şov</td></tr>
+<tr class="wr"><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Pûşîden (پوشیدن)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Pûşîden (پوشیدن)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Pûşîden (پوشیدن)</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Pûş (پوش)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Pûş (پوش)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Pûş (پوش)</td><td>Pûşîden / Pûş</td></tr>
+<tr class="wr"><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Feristâden (فرستادن)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Feristâden (فرستادن)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Feristâden (فرستادن)</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Ferist (فرست)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Ferist (فرست)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Ferist (فرست)</td><td>Feristâden / Ferist</td></tr>
+<tr class="wr"><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Gerevîden (گرویدن)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Gerevîden (گرویدن)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Gerevîden (گرویدن)</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Gerev (گرو)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Gerev (گرو)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Gerev (گرو)</td><td>Gerevîden / Gerev</td></tr>
+<tr class="wr"><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Şinâhten (شناختن)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Şinâhten (شناختن)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Şinâhten (شناختن)</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Şinâs (شناس)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Şinâs (شناس)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Şinâs (شناس)</td><td>Şinâhten / Şinâs</td></tr>
+<tr class="wr"><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Tersîden (ترسیدن)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Tersîden (ترسیدن)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Tersîden (ترسیدن)</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Ters (ترس)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Ters (ترس)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Ters (ترس)</td><td>Tersîden / Ters</td></tr>
+<tr class="wr"><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Handîden (خندیدن)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Handîden (خندیدن)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Handîden (خندیدن)</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Hand (خند)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Hand (خند)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Hand (خند)</td><td>Handîden / Hand</td></tr>
+<tr class="wr"><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Giryîden (گرییدن)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Giryîden (گرییدن)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Giryîden (گرییدن)</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Giry (گری)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Giry (گری)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Giry (گری)</td><td>Giryîden / Giry</td></tr>
+<tr class="wr"><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Bâhten (باختن)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Bâhten (باختن)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Bâhten (باختن)</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Bâz (باز)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Bâz (باز)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Bâz (باز)</td><td>Bâzten / Bâz</td></tr>
+<tr class="wr"><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Borden (بردن)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Borden (بردن)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Borden (بردن)</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Ber (بر)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Ber (بر)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Ber (بر)</td><td>Borden / Ber</td></tr>
+<tr class="wr"><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Bâzî kerden (بازی کردن)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Bâzî kerden (بازی کردن)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Bâzî kerden (بازی کردن)</td><td>Bâzî kerden</td><td>Bâzî kon</td></tr>
+<tr class="wr"><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Gereften (گرفتن)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Gereften (گرفتن)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Gereften (گرفتن)</td><td>Gereften / Gîr</td><td>Gîr</td></tr>
+<tr class="wr"><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Besten (بستن)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Besten (بستن)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Besten (بستن)</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Bend (بند)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Bend (بند)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Bend (بند)</td><td>Besten / Bend</td></tr>
+<tr class="wr"><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Guşâden (گشادن)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Guşâden (گشادن)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Guşâden (گشادن)</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Guşâ (گشا)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Guşâ (گشا)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Guşâ (گشا)</td><td>Guşâden / Guşâ</td></tr>
+<tr class="wr"><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Fehmîden (فهمیدن)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Fehmîden (فهمیدن)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Fehmîden (فهمیدن)</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Fehm (فهم)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Fehm (فهم)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Fehm (فهم)</td><td>Fehmîden / Fehm</td></tr>
+<tr class="wr"><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Uftâden (افتادن)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Uftâden (افتادن)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Uftâden (افتادن)</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Uft (افت)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Uft (افت)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Uft (افت)</td><td>Uftâden / Uft</td></tr>
+<tr class="wr"><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Hezîden (خزیدن)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Hezîden (خزیدن)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Hezîden (خزیدن)</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Hez (خز)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Hez (خز)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Hez (خز)</td><td>Hezîden / Hez</td></tr>
+<tr class="wr"><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Perîden (پریدن)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Perîden (پریدن)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Perîden (پریدن)</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Per (پر)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Per (پر)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Per (پر)</td><td>Perîden / Per</td></tr>
+<tr class="wr"><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Rasîden (رسیدن)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Rasîden (رسیدن)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Rasîden (رسیدن)</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Ras (رس)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Ras (رس)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Ras (رس)</td><td>Rasîden / Ras</td></tr>
+<tr class="wr"><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Kâşten (کاشتن)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Kâşten (کاشتن)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Kâşten (کاشتن)</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Kâr (کار)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Kâr (کار)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Kâr (کار)</td><td>Kâşten / Kâr</td></tr>
+<tr class="wr"><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Mânden (ماندن)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Mânden (ماندن)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Mânden (ماندن)</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=Mân (مان)&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=Mân (مان)&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>Mân (مان)</td><td>Mânden / Mân</td></tr>
+</tbody></table>
+</div>
+
+<script>
+const inp = document.getElementById('wsearch');
+const cnt = document.getElementById('wcnt');
+if(inp){
+  inp.addEventListener('input',()=>{
+    const q = inp.value.toLowerCase().trim();
+    let v=0;
+    document.querySelectorAll('.wr').forEach(r=>{
+      const m = !q || r.textContent.toLowerCase().includes(q);
+      r.style.display = m ? '' : 'none';
+      if(m) v++;
+    });
+    cnt.textContent = q ? v+' sonuç' : '';
+  });
+}
+</script>
+
+<a id="back-btn" href="index.html"><span class="arrow">←</span> Ana Sayfa</a>
+
+<a class="ch-arrow-btn ch-arrow-prev" href="chapter-05.html" title="Önceki Bölüm">&#8592;</a>
+<a class="ch-arrow-btn ch-arrow-next" href="chapter-07.html" title="Sonraki Bölüm">&#8594;</a>
+
+</body></html>

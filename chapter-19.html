@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bölüm 19: Dini Terimler — Farsça–Türkçe Sözlük</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600&family=Noto+Naskh+Arabic:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --gold: #c9a84c; --gold-lt: #e8c97a; --gold-dk: #9a6f22;
+  --teal: #0d4f4f; --teal-lt: #145f5f; --teal-dk: #082d2d;
+  --cream: #fdf8f0; --cream-dk: #f5ede0;
+  --ink: #1a1410; --ink-soft: #4a3728; --muted: #8a7465;
+  --white: #fff; --radius: 10px;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; background: var(--cream); color: var(--ink); line-height: 1.7; }
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(8,45,45,.97); backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(201,168,76,.25);
+  padding: .9rem 2rem;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo { font-family: 'Noto Naskh Arabic', serif; color: var(--gold); font-size: 1.1rem; text-decoration: none; }
+.nav-title { font-size: .72rem; color: rgba(255,255,255,.5); letter-spacing: .08em; text-transform: uppercase; }
+.nav-right { display: flex; align-items: center; gap: 1rem; }
+.nav-back {
+  color: rgba(255,255,255,.7); text-decoration: none; font-size: .8rem;
+  font-weight: 500; letter-spacing: .05em; text-transform: uppercase;
+  transition: color .2s;
+}
+.nav-back:hover { color: var(--gold-lt); }
+.chapter-nav { display: flex; gap: .5rem; }
+.ch-btn {
+  background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15);
+  color: rgba(255,255,255,.7); border-radius: 6px; padding: .35rem .85rem;
+  font-size: .78rem; font-weight: 600; text-decoration: none; transition: all .2s;
+  cursor: pointer;
+}
+.ch-btn:hover { background: rgba(201,168,76,.2); border-color: rgba(201,168,76,.4); color: var(--gold-lt); }
+.ch-btn.disabled { opacity: .3; pointer-events: none; }
+.hero-ch {
+  background: linear-gradient(135deg, var(--teal-dk), var(--teal));
+  padding: 3.5rem 2rem 2.5rem;
+  text-align: center;
+}
+.ch-num { font-size: .75rem; font-weight: 700; letter-spacing: .15em; color: var(--gold-lt); text-transform: uppercase; margin-bottom: .8rem; }
+.ch-title { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem,4vw,2.8rem); font-weight: 900; color: var(--white); }
+.ch-title-fa { font-family: 'Noto Naskh Arabic', serif; font-size: 1.4rem; color: rgba(255,255,255,.6); margin-top: .4rem; direction: rtl; }
+.content { max-width: 900px; margin: 3rem auto; padding: 0 2rem 5rem; }
+.section-head {
+  font-size: .75rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--gold-dk); background: var(--cream-dk);
+  padding: .6rem 1.2rem; border-radius: 8px; margin: 2rem 0 1rem;
+  border-left: 3px solid var(--gold);
+}
+.word-table { width: 100%; border-collapse: collapse; margin-bottom: .5rem; }
+.word-table th {
+  background: var(--teal); color: var(--white);
+  font-size: .7rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+  padding: .6rem 1.1rem; text-align: left;
+}
+.word-table th:last-child { text-align: right; }
+.word-table td {
+  padding: .65rem 1.1rem; border-bottom: 1px solid var(--cream-dk);
+  font-size: .9rem; color: var(--ink-soft);
+  vertical-align: middle;
+}
+.word-table tr:last-child td { border-bottom: none; }
+.word-table tr:hover td { background: var(--white); }
+.td-fa {
+  font-family: 'Noto Naskh Arabic', serif; font-size: 1.15rem; font-weight: 600;
+  color: var(--teal); direction: rtl; text-align: right;
+}
+.td-note { font-size: .8rem; color: var(--muted); font-style: italic; }
+.text-block {
+  background: var(--white); border: 1px solid var(--cream-dk);
+  border-radius: var(--radius); padding: 1.2rem 1.5rem;
+  font-size: .9rem; color: var(--ink-soft); line-height: 1.8;
+  margin: .5rem 0;
+}
+.card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px,1fr)); gap: .75rem; margin: 1rem 0; }
+.card {
+  background: var(--white); border: 1px solid var(--cream-dk);
+  border-radius: var(--radius); padding: 1rem 1.2rem;
+  display: flex; flex-direction: column; align-items: center; gap: .4rem;
+  transition: border-color .2s, transform .2s;
+  text-align: center;
+}
+.card:hover { border-color: rgba(201,168,76,.4); transform: translateY(-2px); }
+.card-fa { font-family: 'Noto Naskh Arabic', serif; font-size: 1.5rem; font-weight: 700; color: var(--teal); direction: rtl; }
+.card-tr { font-size: .85rem; color: var(--ink-soft); font-weight: 500; }
+.card-note { font-size: .72rem; color: var(--muted); }
+.search-wrap { position: relative; margin-bottom: 1.5rem; }
+.search-icon { position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--muted); pointer-events: none; }
+#word-search {
+  width: 100%; padding: .8rem 1rem .8rem 2.8rem;
+  border: 1.5px solid var(--cream-dk); border-radius: 10px;
+  font-size: .9rem; font-family: 'Inter', sans-serif;
+  background: var(--white); outline: none; transition: border-color .2s;
+}
+#word-search:focus { border-color: var(--teal); }
+.count-badge { position: absolute; right: 1rem; top: 50%; transform: translateY(-50%); font-size: .72rem; color: var(--muted); font-weight: 600; }
+.row-hidden { display: none !important; }
+@media(max-width:600px) { .card-grid { grid-template-columns: 1fr 1fr; } }
+
+    /* ─── BACK BUTTON ─── */
+    #back-btn {
+      position: fixed;
+      bottom: 2rem; left: 2rem;
+      display: flex; align-items: center; gap: .5rem;
+      background: var(--teal);
+      border: 1px solid rgba(201,168,76,.35);
+      color: var(--white);
+      font-size: .8rem; font-weight: 600;
+      letter-spacing: .06em; text-transform: uppercase;
+      padding: .65rem 1.2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      box-shadow: 0 4px 16px rgba(0,0,0,.25);
+      transition: background .2s, transform .2s, box-shadow .2s;
+      z-index: 99;
+    }
+    #back-btn:hover {
+      background: var(--gold-dk);
+      transform: translateX(-3px);
+      box-shadow: 0 6px 24px rgba(0,0,0,.3);
+    }
+    #back-btn .arrow { font-size: 1rem; }
+
+  
+    /* ─── FLOATING CHAPTER ARROWS ─── */
+    .ch-arrow-btn {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 48px; height: 48px;
+      background: var(--teal);
+      border: 1px solid rgba(201,168,76,.35);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--white);
+      font-size: 1.3rem;
+      text-decoration: none;
+      box-shadow: 0 4px 18px rgba(0,0,0,.28);
+      transition: background .2s, transform .2s, box-shadow .2s, opacity .2s;
+      z-index: 98;
+      opacity: .75;
+    }
+    .ch-arrow-btn:hover {
+      background: var(--gold-dk);
+      opacity: 1;
+      box-shadow: 0 6px 28px rgba(0,0,0,.35);
+    }
+    .ch-arrow-prev { left: .9rem; }
+    .ch-arrow-prev:hover { transform: translateY(-50%) translateX(-3px); }
+    .ch-arrow-next { right: .9rem; }
+    .ch-arrow-next:hover { transform: translateY(-50%) translateX(3px); }
+    .ch-arrow-btn.disabled { opacity: .2; pointer-events: none; }
+    @media(max-width:900px) {
+      .ch-arrow-btn { width: 40px; height: 40px; font-size: 1.05rem; opacity: .6; }
+      .ch-arrow-prev { left: .4rem; }
+      .ch-arrow-next { right: .4rem; }
+    }
+
+  
+    /* ─── DICTIONARY BADGES ─── */
+    .dict-refs { display: inline-flex; gap: 4px; margin-right: 6px; vertical-align: middle; }
+    .dict-link {
+      font-family: 'Inter', sans-serif;
+      font-size: .58rem; font-weight: 700; letter-spacing: .04em;
+      padding: 2px 5px; border-radius: 4px;
+      text-decoration: none; line-height: 1;
+      transition: opacity .15s;
+    }
+    .dict-link:hover { opacity: .75; }
+    .dict-link.dh { background: #1a5f5f; color: #e8c97a; }
+    .dict-link.mn { background: #7a3f00; color: #f5ede0; }
+
+    /* ─── DEFINITION TOOLTIP ─── */
+    .def-wrap { position: relative; display: inline-block; }
+    .def-icon {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 16px; height: 16px; border-radius: 50%;
+      background: rgba(201,168,76,.2); border: 1px solid rgba(201,168,76,.5);
+      color: #9a6f22; font-size: .62rem; font-weight: 700;
+      cursor: help; margin-right: 4px; flex-shrink: 0;
+      font-family: 'Inter', sans-serif; font-style: normal;
+      transition: background .2s;
+    }
+    .def-icon:hover { background: rgba(201,168,76,.45); }
+    .def-box {
+      visibility: hidden; opacity: 0;
+      position: absolute; bottom: 130%; left: 50%; transform: translateX(-50%);
+      min-width: 260px; max-width: 320px;
+      background: #082d2d; border: 1px solid rgba(201,168,76,.3);
+      border-radius: 10px; padding: .85rem 1rem;
+      z-index: 200; pointer-events: none;
+      transition: opacity .2s, visibility .2s;
+      box-shadow: 0 8px 28px rgba(0,0,0,.4);
+    }
+    .def-box::after {
+      content: '';
+      position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+      border: 6px solid transparent; border-top-color: rgba(201,168,76,.3);
+    }
+    .def-wrap:hover .def-box { visibility: visible; opacity: 1; }
+    .def-source {
+      font-size: .65rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+      color: #e8c97a; margin-bottom: .35rem; font-family: 'Inter', sans-serif;
+    }
+    .def-text {
+      font-family: 'Noto Naskh Arabic', serif; font-size: .92rem;
+      color: rgba(255,255,255,.85); line-height: 1.65; direction: rtl; text-align: right;
+    }
+
+  </style>
+</head><body>
+<nav>
+  <div>
+    <a class="nav-logo" href="index.html">فرهنگ فارسی و ترکی</a>
+    <div class="nav-title">Farsça–Türkçe Sözlük · 2026</div>
+  </div>
+  <div class="nav-right">
+    <a class="nav-back" href="index.html">← Ana Sayfa</a>
+    <div class="chapter-nav">
+      <a class="ch-btn" href="chapter-18.html">‹ Önceki</a>
+      <a class="ch-btn" href="chapter-20.html">Sonraki ›</a>
+    </div>
+  </div>
+</nav>
+<div class="hero-ch">
+  <div class="ch-num">Bölüm 19 · 85 kelime</div>
+  <div class="ch-title">Dini Terimler</div>
+  <div class="ch-title-fa">کلمات مذهبی</div>
+</div><div style="max-width:900px;margin:2rem auto 0;padding:0 2rem;">
+  <div class="search-wrap">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="wsearch" placeholder="Kelime ara..." autocomplete="off"/>
+    <span class="count-badge" id="wcnt"></span>
+  </div>
+</div>
+<div class="content">
+<div class="text-block">🕋 En Yüce ve Akide Temelli Kavramlar</div>
+<div class="section-head">DİNİ TERİMLER کلمات مذهبـــــــی</div>
+<table class="word-table"><thead><tr><th>Türkçe</th><th>Farsça / Dari</th></tr></thead><tbody>
+<tr class="wr"><td>Allah</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=الله / خداوند&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=الله / خداوند&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>الله / خداوند</td></tr>
+<tr class="wr"><td>Din</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=دین&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=دین&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>دین</td></tr>
+<tr class="wr"><td>Vahiy</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=وحی&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=وحی&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>وحی</td></tr>
+<tr class="wr"><td>Kader</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=قدر / سرنوشت&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=قدر / سرنوشت&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>قدر / سرنوشت</td></tr>
+<tr class="wr"><td>Şeriat</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=شریعت&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=شریعت&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>شریعت</td></tr>
+<tr class="wr"><td>İnanç – İtikat</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=اعتقاد&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=اعتقاد&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>اعتقاد</td></tr>
+<tr class="wr"><td>Mezhep</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=مذهب&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=مذهب&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>مذهب</td></tr>
+<tr class="wr"><td>Ümmet</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=امت&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=امت&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>امت</td></tr>
+<tr class="wr"><td>Millet</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=ملت&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=ملت&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>ملت</td></tr>
+</tbody></table>
+<div class="text-block">🌟 Peygamberlik ve İlahi Rehberlik</div>
+<table class="word-table"><thead><tr><th>Türkçe</th><th>Farsça / Dari</th></tr></thead><tbody>
+<tr class="wr"><td>Peygamber</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=پیامبر&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=پیامبر&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>پیامبر</td></tr>
+<tr class="wr"><td>İlham</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=الهام&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=الهام&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>الهام</td></tr>
+<tr class="wr"><td>Vahiy</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=وحی&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=وحی&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>وحی</td></tr>
+<tr class="wr"><td>Sahabe</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=صحابه&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=صحابه&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>صحابه</td></tr>
+<tr class="wr"><td>Tabiin</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=تابعین&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=تابعین&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>تابعین</td></tr>
+<tr class="wr"><td>Âlimler</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=علما&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=علما&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>علما</td></tr>
+<tr class="wr"><td>Mürşid-i Kâmil</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=مرشد کامل&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=مرشد کامل&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>مرشد کامل</td></tr>
+<tr class="wr"><td>Evliya (Allah Dostu)</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=ولی‌الله&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=ولی‌الله&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>ولی‌الله</td></tr>
+</tbody></table>
+<div class="text-block">🕌 İbadetler ve Dini Uygulamalar</div>
+<table class="word-table"><thead><tr><th>Türkçe</th><th>Farsça / Dari</th></tr></thead><tbody>
+<tr class="wr"><td>Namaz</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=نماز&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=نماز&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>نماز</td></tr>
+<tr class="wr"><td>Farz</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=فرض&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=فرض&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>فرض</td></tr>
+<tr class="wr"><td>Vacip</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=واجب&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=واجب&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>واجب</td></tr>
+<tr class="wr"><td>Sünnet</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=سنت&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=سنت&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>سنت</td></tr>
+<tr class="wr"><td>Mekruh</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=مکروه&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=مکروه&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>مکروه</td></tr>
+<tr class="wr"><td>Abdest</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=وضو&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=وضو&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>وضو</td></tr>
+<tr class="wr"><td>Gusül</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=غسل&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=غسل&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>غسل</td></tr>
+<tr class="wr"><td>Oruç (ek)</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=روزه&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=روزه&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>روزه</td></tr>
+<tr class="wr"><td>Zekât (ek)</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=زکات&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=زکات&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>زکات</td></tr>
+<tr class="wr"><td>Kurban</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=قربانی&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=قربانی&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>قربانی</td></tr>
+<tr class="wr"><td>Tövbe Etmek</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=توبه کردن&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=توبه کردن&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>توبه کردن</td></tr>
+<tr class="wr"><td>Tespih</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=تسبیح&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=تسبیح&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>تسبیح</td></tr>
+<tr class="wr"><td>Zikir</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=ذکر&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=ذکر&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>ذکر</td></tr>
+<tr class="wr"><td>Tilavet</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=تلاوت&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=تلاوت&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>تلاوت</td></tr>
+<tr class="wr"><td>Dua (ek)</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=دعا&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=دعا&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>دعا</td></tr>
+<tr class="wr"><td>Hayır ve Sadaka</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=خیرات و صدقات&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=خیرات و صدقات&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>خیرات و صدقات</td></tr>
+</tbody></table>
+<div class="section-head">İbadet Mekânları ve Unsurları</div>
+<table class="word-table"><thead><tr><th>Türkçe</th><th>Farsça / Dari</th></tr></thead><tbody>
+<tr class="wr"><td>Mihrap</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=محراب&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=محراب&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>محراب</td></tr>
+<tr class="wr"><td>Minber</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=منبر&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=منبر&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>منبر</td></tr>
+<tr class="wr"><td>Minare</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=مناره&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=مناره&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>مناره</td></tr>
+<tr class="wr"><td>Saf</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=صف&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=صف&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>صف</td></tr>
+<tr class="wr"><td>Hutbe</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=خطبه&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=خطبه&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>خطبه</td></tr>
+<tr class="wr"><td>Ezan</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=اذان&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=اذان&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>اذان</td></tr>
+<tr class="wr"><td>Cemaat</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=جماعت&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=جماعت&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>جماعت</td></tr>
+<tr class="wr"><td>Tekke / Zikir Meclisi</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=خانقاه&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=خانقاه&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>خانقاه</td></tr>
+</tbody></table>
+<div class="text-block">👳 Dinî Görevler ve Kıyafetler</div>
+<table class="word-table"><thead><tr><th>Türkçe</th><th>Farsça / Dari</th></tr></thead><tbody>
+<tr class="wr"><td>İmam</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=امام&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=امام&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>امام</td></tr>
+<tr class="wr"><td>Müezzin</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=مؤذن&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=مؤذن&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>مؤذن</td></tr>
+<tr class="wr"><td>Hacı</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=حاجی&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=حاجی&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>حاجی</td></tr>
+<tr class="wr"><td>Cübbe</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=جبه&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=جبه&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>جبه</td></tr>
+<tr class="wr"><td>Sarık</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=دستار&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=دستار&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>دستار</td></tr>
+<tr class="wr"><td>Takke</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=کلاه&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=کلاه&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>کلاه</td></tr>
+<tr class="wr"><td>Mest</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=موزهٔ مسح&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=موزهٔ مسح&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>موزهٔ مسح</td></tr>
+</tbody></table>
+<div class="section-head">Helal – Haram ve Ahlâk</div>
+<table class="word-table"><thead><tr><th>Türkçe</th><th>Farsça / Dari</th></tr></thead><tbody>
+<tr class="wr"><td>Helal</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=حلال&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=حلال&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>حلال</td></tr>
+<tr class="wr"><td>Haram</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=حرام&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=حرام&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>حرام</td></tr>
+<tr class="wr"><td>Günah</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=گناه&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=گناه&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>گناه</td></tr>
+<tr class="wr"><td>Sevap</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=ثواب&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=ثواب&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>ثواب</td></tr>
+<tr class="wr"><td>Edep / Âdab</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=ادب&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=ادب&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>ادب</td></tr>
+<tr class="wr"><td>Ahlâk</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=اخلاق&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=اخلاق&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>اخلاق</td></tr>
+<tr class="wr"><td>Saygı / Hürmet</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=احترام&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=احترام&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>احترام</td></tr>
+<tr class="wr"><td>Doğruluk</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=صداقت&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=صداقت&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>صداقت</td></tr>
+<tr class="wr"><td>Selam</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=سلام&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=سلام&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>سلام</td></tr>
+</tbody></table>
+<div class="text-block">🌙 Ahiret ve Ölümle İlgili Kavramlar</div>
+<table class="word-table"><thead><tr><th>Türkçe</th><th>Farsça / Dari</th></tr></thead><tbody>
+<tr class="wr"><td>Ölüm</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=مرگ&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=مرگ&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>مرگ</td></tr>
+<tr class="wr"><td>Ölmek</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=مُردن&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=مُردن&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>مُردن</td></tr>
+<tr class="wr"><td>Doğmak</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=متولد شدن&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=متولد شدن&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>متولد شدن</td></tr>
+<tr class="wr"><td>Kabir / Mezar</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=قبر / مزار&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=قبر / مزار&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>قبر / مزار</td></tr>
+<tr class="wr"><td>Kefen</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=کفن&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=کفن&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>کفن</td></tr>
+<tr class="wr"><td>Cenaze</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=جنازه&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=جنازه&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>جنازه</td></tr>
+<tr class="wr"><td>Tabut</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=تابوت&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=تابوت&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>تابوت</td></tr>
+<tr class="wr"><td>Diriliş (Mahşer)</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=رستاخیز&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=رستاخیز&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>رستاخیز</td></tr>
+<tr class="wr"><td>Cennet</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=جنت / بهشت&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=جنت / بهشت&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>جنت / بهشت</td></tr>
+<tr class="wr"><td>Cehennem</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=دوزخ / جهنم&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=دوزخ / جهنم&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>دوزخ / جهنم</td></tr>
+<tr class="wr"><td>Azap</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=عذاب&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=عذاب&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>عذاب</td></tr>
+</tbody></table>
+<div class="text-block">👪 Aile ve Toplumsal Hayat</div>
+<table class="word-table"><thead><tr><th>Türkçe</th><th>Farsça / Dari</th></tr></thead><tbody>
+<tr class="wr"><td>Nikâh</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=نکاح&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=نکاح&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>نکاح</td></tr>
+<tr class="wr"><td>Evlenmek</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=ازدواج&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=ازدواج&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>ازدواج</td></tr>
+<tr class="wr"><td>Koca</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=شوهر&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=شوهر&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>شوهر</td></tr>
+<tr class="wr"><td>Kadın</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=زن&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=زن&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>زن</td></tr>
+<tr class="wr"><td>Evlat / Çocuk</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=اولاد&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=اولاد&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>اولاد</td></tr>
+<tr class="wr"><td>Boşanma</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=طلاق&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=طلاق&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>طلاق</td></tr>
+<tr class="wr"><td>Kul / Bende</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=بنده&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=بنده&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>بنده</td></tr>
+</tbody></table>
+<div class="text-block">📜 Dinle İlişkili Hukukî ve İdarî Terimler</div>
+<table class="word-table"><thead><tr><th>Türkçe</th><th>Farsça / Dari</th></tr></thead><tbody>
+<tr class="wr"><td>Fetva</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=فتوا&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=فتوا&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>فتوا</td></tr>
+<tr class="wr"><td>Hüküm</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=حکم&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=حکم&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>حکم</td></tr>
+<tr class="wr"><td>Şahit</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=شاهد&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=شاهد&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>شاهد</td></tr>
+<tr class="wr"><td>Vasiyetname</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=وصیت‌نامه&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=وصیت‌نامه&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>وصیت‌نامه</td></tr>
+<tr class="wr"><td>Şura</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=شورا&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=شورا&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>شورا</td></tr>
+<tr class="wr"><td>Hilafet</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=خلافت&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=خلافت&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>خلافت</td></tr>
+</tbody></table>
+<div class="section-head">İnanç Karşıtı Kavramlar (Uyarı Amaçlı)</div>
+<table class="word-table"><thead><tr><th>Türkçe</th><th>Farsça / Dari</th></tr></thead><tbody>
+<tr class="wr"><td>Şeytan</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=شیطان&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=شیطان&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>شیطان</td></tr>
+<tr class="wr"><td>Kâfir</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=کافر&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=کافر&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>کافر</td></tr>
+<tr class="wr"><td>Müşrik</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=مشرک&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=مشرک&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>مشرک</td></tr>
+<tr class="wr"><td>Münafık</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=منافق&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=منافق&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>منافق</td></tr>
+</tbody></table>
+</div>
+
+<script>
+const inp = document.getElementById('wsearch');
+const cnt = document.getElementById('wcnt');
+if(inp){
+  inp.addEventListener('input',()=>{
+    const q = inp.value.toLowerCase().trim();
+    let v=0;
+    document.querySelectorAll('.wr').forEach(r=>{
+      const m = !q || r.textContent.toLowerCase().includes(q);
+      r.style.display = m ? '' : 'none';
+      if(m) v++;
+    });
+    cnt.textContent = q ? v+' sonuç' : '';
+  });
+}
+</script>
+
+<a id="back-btn" href="index.html"><span class="arrow">←</span> Ana Sayfa</a>
+
+<a class="ch-arrow-btn ch-arrow-prev" href="chapter-18.html" title="Önceki Bölüm">&#8592;</a>
+<a class="ch-arrow-btn ch-arrow-next" href="chapter-20.html" title="Sonraki Bölüm">&#8594;</a>
+
+</body></html>

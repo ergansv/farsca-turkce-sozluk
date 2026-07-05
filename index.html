@@ -1,0 +1,1539 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>فرهنگ فارسی و ترکی ۲۰۲۶ — Farsça–Türkçe Sözlük</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700&family=Noto+Naskh+Arabic:wght@400;600;700&display=swap" rel="stylesheet" />
+  <script src="vocab.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold:    #c9a84c;
+      --gold-lt: #e8c97a;
+      --gold-dk: #9a6f22;
+      --teal:    #0d4f4f;
+      --teal-lt: #145f5f;
+      --teal-dk: #061e1e;
+      --cream:   #f8f5ef;
+      --cream-dk:#efe9df;
+      --ink:     #111614;
+      --soft:    #374040;
+      --muted:   #7a8585;
+      --white:   #ffffff;
+      --r:       12px;
+      --trans:   background .25s, color .25s, border-color .25s;
+    }
+    [data-theme="dark"] {
+      --cream:   #131e1e;
+      --cream-dk:#1c2a2a;
+      --ink:     #e2eded;
+      --soft:    #a8bcbb;
+      --muted:   #6a8a8a;
+      --white:   #192828;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--cream); color: var(--ink);
+      line-height: 1.7; overflow-x: hidden;
+      transition: var(--trans);
+    }
+    #hakkinda, #icerik, #ornekler, #siir, #yazar { scroll-margin-top: 64px; }
+
+    /* FADE */
+    .fade { opacity:0; transform:translateY(22px);
+      transition: opacity .65s cubic-bezier(.22,1,.36,1), transform .65s cubic-bezier(.22,1,.36,1); }
+    .fade.d1{transition-delay:.08s} .fade.d2{transition-delay:.16s} .fade.d3{transition-delay:.24s}
+    .fade.visible { opacity:1; transform:none; }
+
+    /* ═══ NAV ═══ */
+    nav {
+      position:fixed; top:0; left:0; right:0; z-index:200;
+      height:64px; display:flex; align-items:center; justify-content:space-between;
+      padding:0 2.5rem;
+      background:rgba(6,30,30,.5);
+      backdrop-filter:blur(22px) saturate(160%);
+      -webkit-backdrop-filter:blur(22px) saturate(160%);
+      border-bottom:1px solid rgba(255,255,255,.07);
+      transition:background .3s;
+    }
+    nav.scrolled { background:rgba(6,30,30,.9); }
+    .nav-brand { display:flex; flex-direction:column; gap:1px; }
+    .nav-brand-fa { font-family:'Noto Naskh Arabic',serif; font-size:.98rem; font-weight:700; color:var(--gold-lt); line-height:1; }
+    .nav-brand-en { font-size:.6rem; letter-spacing:.12em; text-transform:uppercase; color:rgba(255,255,255,.3); font-weight:500; }
+    .nav-links { list-style:none; display:flex; gap:2rem; }
+    .nav-links a { color:rgba(255,255,255,.55); text-decoration:none;
+      font-size:.75rem; font-weight:500; letter-spacing:.08em; text-transform:uppercase; transition:color .2s; }
+    .nav-links a:hover, .nav-links a.active { color:var(--gold-lt); }
+    .nav-right { display:flex; align-items:center; gap:.5rem; }
+    .nav-icon {
+      background:none; border:1px solid rgba(255,255,255,.13);
+      border-radius:8px; width:36px; height:36px;
+      display:flex; align-items:center; justify-content:center;
+      cursor:pointer; font-size:.9rem; color:rgba(255,255,255,.65);
+      transition:background .2s, border-color .2s, color .2s;
+    }
+    .nav-icon:hover { background:rgba(255,255,255,.1); border-color:rgba(255,255,255,.25); color:#fff; }
+    .hbg { display:none; flex-direction:column; gap:5px;
+      background:none; border:none; cursor:pointer; padding:4px; }
+    .hbg span { display:block; width:20px; height:1.5px;
+      background:rgba(255,255,255,.75); border-radius:2px;
+      transition:transform .28s, opacity .28s; }
+    .hbg.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+    .hbg.open span:nth-child(2){opacity:0}
+    .hbg.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+    .mmenu { position:fixed; inset:0; z-index:150; background:rgba(6,30,30,.97);
+      backdrop-filter:blur(24px); display:flex; flex-direction:column;
+      align-items:center; justify-content:center; gap:2.5rem;
+      opacity:0; visibility:hidden; transition:opacity .3s,visibility .3s; }
+    .mmenu.open { opacity:1; visibility:visible; }
+    .mmenu a { font-family:'Playfair Display',serif; font-size:1.9rem; font-weight:700;
+      color:#fff; text-decoration:none; transition:color .2s; }
+    .mmenu a:hover { color:var(--gold-lt); }
+
+    /* ═══ HERO ═══ */
+    .hero {
+      display:flex; flex-direction:column; align-items:center; justify-content:flex-start;
+      text-align:center; padding:4.2rem 0 0; min-height:92svh;
+      position:relative; overflow:hidden;
+      background:
+        radial-gradient(ellipse 90% 55% at 50% -5%, rgba(13,79,79,.6) 0%, transparent 65%),
+        radial-gradient(ellipse 55% 40% at 85% 90%, rgba(201,168,76,.08) 0%, transparent 60%),
+        linear-gradient(170deg, #061e1e 0%, #0b2e2e 50%, #0a1f1a 100%);
+    }
+    .hero::before {
+      content:''; position:absolute; inset:0; pointer-events:none;
+      background-image:
+        linear-gradient(rgba(201,168,76,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201,168,76,.035) 1px, transparent 1px);
+      background-size:64px 64px;
+      mask-image:radial-gradient(ellipse 75% 75% at 50% 50%, black 0%, transparent 80%);
+      -webkit-mask-image:radial-gradient(ellipse 75% 75% at 50% 50%, black 0%, transparent 80%);
+    }
+    .orb { position:absolute; border-radius:50%; filter:blur(70px);
+      pointer-events:none; animation:orbF 16s ease-in-out infinite; }
+    .orb-a { width:380px; height:380px; top:-8%; left:-6%;
+      background:radial-gradient(circle, rgba(13,79,79,.45) 0%, transparent 70%); }
+    .orb-b { width:280px; height:280px; bottom:8%; right:4%;
+      background:radial-gradient(circle, rgba(201,168,76,.08) 0%, transparent 70%);
+      animation-direction:reverse; animation-duration:20s; }
+    @keyframes orbF {
+      0%,100%{transform:translate(0,0)} 40%{transform:translate(18px,-14px)} 70%{transform:translate(-10px,10px)}
+    }
+    .hero > *:not(.orb) { position:relative; z-index:1; }
+
+    .hero-besmele {
+      width:100%; text-align:center;
+      padding: 1.2rem 1rem .8rem;
+      display:flex; flex-direction:column; align-items:center; gap:.3rem;
+      border-bottom:1px solid rgba(201,168,76,.1);
+      margin-bottom:auto;
+    }
+    .besmele-ar {
+      font-family:'Noto Naskh Arabic',serif;
+      font-size:clamp(1.2rem,2.5vw,1.65rem); font-weight:700;
+      color:rgba(232,201,122,.8); direction:rtl; letter-spacing:.05em;
+    }
+    .besmele-fa {
+      font-family:'Noto Naskh Arabic',serif;
+      font-size:clamp(.68rem,1vw,.8rem); font-weight:400;
+      color:rgba(255,255,255,.3); letter-spacing:.05em; direction:rtl;
+    }
+    .hero-main {
+      flex:1; display:flex; flex-direction:column;
+      align-items:center; justify-content:center;
+      padding:2rem 1rem 2rem;
+    }
+    .pill { display:inline-flex; align-items:center; gap:.45rem;
+      background:rgba(201,168,76,.09); border:1px solid rgba(201,168,76,.22);
+      border-radius:50px; padding:.28rem .95rem;
+      font-size:.68rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase;
+      color:var(--gold-lt); margin-bottom:1.8rem; backdrop-filter:blur(8px); }
+    .pill-dot { width:5px; height:5px; border-radius:50%; background:var(--gold);
+      animation:pulse 2s ease-in-out infinite; }
+    @keyframes pulse {
+      0%,100%{box-shadow:0 0 0 0 rgba(201,168,76,.5)} 50%{box-shadow:0 0 0 5px rgba(201,168,76,0)}
+    }
+    .hero-fa { font-family:'Noto Naskh Arabic',serif;
+      font-size:clamp(1.4rem,3.5vw,2.4rem); font-weight:700;
+      color:rgba(255,255,255,.8); direction:rtl; margin-bottom:.9rem; }
+    .hero-sep { display:flex; align-items:center; gap:.7rem; justify-content:center; margin-bottom:1.2rem; }
+    .hero-sep-line { width:48px; height:1px; }
+    .hero-sep-line:first-child { background:linear-gradient(90deg, transparent, rgba(201,168,76,.4)); }
+    .hero-sep-line:last-child  { background:linear-gradient(90deg, rgba(201,168,76,.4), transparent); }
+    .hero-sep span { color:var(--gold); font-size:.45rem; opacity:.6; }
+    .hero-title { font-family:'Playfair Display',serif;
+      font-size:clamp(2.4rem,6vw,4.6rem); font-weight:900;
+      line-height:1.1; letter-spacing:-.025em; margin-bottom:.5rem;
+      background:linear-gradient(145deg, #fff 0%, rgba(232,201,122,.9) 55%, #fff 100%);
+      -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+    .hero-sub { font-size:clamp(.82rem,1.5vw,.95rem); font-weight:300;
+      color:rgba(255,255,255,.38); letter-spacing:.06em; margin-bottom:2.2rem; }
+    .hero-cta { display:flex; gap:.8rem; justify-content:center; flex-wrap:wrap; margin-bottom:2rem; }
+    .btn-primary { background:linear-gradient(135deg, var(--gold-lt), var(--gold), var(--gold-dk));
+      color:#091a09; font-weight:700; font-size:.78rem; letter-spacing:.1em; text-transform:uppercase;
+      padding:.78rem 1.8rem; border-radius:50px; border:none; text-decoration:none;
+      box-shadow:0 4px 20px rgba(201,168,76,.28); transition:transform .2s, box-shadow .2s; }
+    .btn-primary:hover { transform:translateY(-2px); box-shadow:0 8px 28px rgba(201,168,76,.4); }
+    .btn-ghost { background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.16);
+      backdrop-filter:blur(8px); color:rgba(255,255,255,.75);
+      font-size:.78rem; font-weight:500; letter-spacing:.1em; text-transform:uppercase;
+      padding:.78rem 1.8rem; border-radius:50px; text-decoration:none;
+      transition:background .2s, border-color .2s; }
+    .btn-ghost:hover { background:rgba(255,255,255,.11); border-color:rgba(255,255,255,.28); }
+    .hero-author { display:flex; align-items:center; gap:.8rem; justify-content:center; }
+    .hero-author-line { width:32px; height:1px; background:rgba(201,168,76,.3); }
+    .hero-author-name { font-family:'Noto Naskh Arabic',serif; font-size:.9rem; color:rgba(255,255,255,.4); }
+
+    /* ═══ WOD ═══ */
+    .wod { background:linear-gradient(135deg, rgba(6,30,30,.98), rgba(9,38,32,.98));
+      border-bottom:1px solid rgba(201,168,76,.1); }
+    .wod-inner { max-width:900px; margin:0 auto; padding:2rem 2.5rem;
+      display:flex; align-items:center; gap:2rem; flex-wrap:wrap; }
+    .wod-tag { display:flex; align-items:center; gap:.5rem; flex-shrink:0; }
+    .wod-tag-dot { width:6px; height:6px; border-radius:50%; background:var(--gold); animation:pulse 2s ease-in-out infinite; }
+    .wod-tag-txt { font-size:.63rem; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--gold-lt); }
+    .wod-divider { width:1px; height:44px; background:rgba(255,255,255,.08); flex-shrink:0; }
+    .wod-body { display:flex; align-items:center; gap:1.5rem; flex:1; flex-wrap:wrap; }
+    .wod-word { font-family:'Noto Naskh Arabic',serif; font-size:2.4rem; font-weight:700;
+      direction:rtl; line-height:1;
+      background:linear-gradient(135deg, #fff 0%, var(--gold-lt) 100%);
+      -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+    .wod-info { display:flex; flex-direction:column; gap:.1rem; }
+    .wod-reading { font-size:.92rem; font-style:italic; color:var(--gold-lt); font-weight:500; }
+    .wod-meaning { font-size:.85rem; color:rgba(255,255,255,.6); }
+    .wod-actions { display:flex; gap:.5rem; margin-left:auto; }
+    .wod-next {
+      background:none; border:1px solid rgba(255,255,255,.1); border-radius:8px;
+      padding:.4rem .85rem; color:rgba(255,255,255,.35); font-size:.68rem;
+      letter-spacing:.1em; text-transform:uppercase; cursor:pointer; transition:all .2s; }
+    .wod-next:hover {
+      border-color:rgba(201,168,76,.3); color:var(--gold-lt); background:rgba(201,168,76,.07); }
+
+    /* ═══ STATS ═══ */
+    .stats { background:var(--white); border-bottom:1px solid var(--cream-dk); transition:var(--trans); }
+    .stats-inner { max-width:900px; margin:0 auto; display:grid; grid-template-columns:repeat(3,1fr); }
+    .stat { padding:2.5rem 2rem; text-align:center; border-right:1px solid var(--cream-dk); transition:var(--trans); }
+    .stat:last-child { border-right:none; }
+    .stat-n { font-family:'Playfair Display',serif; font-size:2.6rem; font-weight:900; line-height:1;
+      background:linear-gradient(135deg, var(--teal), var(--teal-lt));
+      -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+    .stat-s { font-family:'Inter',sans-serif; font-size:1.1rem; font-weight:700;
+      color:var(--gold-dk); -webkit-text-fill-color:var(--gold-dk); }
+    .stat-l { font-size:.65rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-top:.55rem; }
+
+    /* ═══ SECTIONS ═══ */
+    section { padding:7rem 2.5rem; }
+    .si { max-width:900px; margin:0 auto; }
+    .eyebrow { font-size:.65rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase;
+      color:var(--gold-dk); display:flex; align-items:center; gap:.55rem; margin-bottom:.9rem; }
+    .eyebrow::before { content:''; display:inline-block; width:20px; height:1.5px; background:var(--gold); }
+    .s-title { font-family:'Playfair Display',serif;
+      font-size:clamp(1.9rem,3.8vw,2.8rem); font-weight:900;
+      color:var(--ink); line-height:1.18; letter-spacing:-.01em; }
+    .s-desc { font-size:.93rem; color:var(--soft); margin-top:.9rem; line-height:1.9; max-width:500px; }
+
+    /* ═══ FEATURES ═══ */
+    .feat-sec { background:var(--cream); transition:var(--trans); }
+    .feat-header { display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:end; margin-bottom:3.5rem; }
+    .feat-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
+    .feat { background:var(--white); border:1px solid rgba(0,0,0,.05); border-radius:var(--r);
+      padding:2rem 1.8rem; transition:transform .28s cubic-bezier(.22,1,.36,1), box-shadow .28s, border-color .28s, background .25s; }
+    .feat:hover { transform:translateY(-4px); box-shadow:0 12px 36px rgba(0,0,0,.08); border-color:rgba(201,168,76,.2); }
+    .feat-icon { width:44px; height:44px; border-radius:11px;
+      background:linear-gradient(135deg, var(--teal), var(--teal-lt));
+      display:flex; align-items:center; justify-content:center; font-size:1.2rem; margin-bottom:1.3rem; }
+    .feat-title { font-family:'Playfair Display',serif; font-size:1.05rem; font-weight:700; color:var(--ink); margin-bottom:.4rem; transition:color .25s; }
+    .feat-desc { font-size:.82rem; color:var(--muted); line-height:1.8; }
+
+    /* ═══ CONTENTS ═══ */
+    .cont-sec { background:var(--white); transition:var(--trans); }
+    .cont-header { display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:1rem; margin-bottom:2.5rem; }
+    .srch { position:relative; width:240px; }
+    .srch input { width:100%; padding:.6rem .9rem .6rem 2.3rem; border:1.5px solid var(--cream-dk);
+      border-radius:8px; font-size:.82rem; font-family:'Inter',sans-serif;
+      background:var(--cream); color:var(--ink); outline:none;
+      transition:border-color .2s, box-shadow .2s, background .25s, color .25s; }
+    .srch input:focus { border-color:var(--teal); box-shadow:0 0 0 3px rgba(13,79,79,.07); }
+    .srch input::placeholder { color:var(--muted); }
+    .srch-ico { position:absolute; left:.8rem; top:50%; transform:translateY(-50%);
+      font-size:.8rem; color:var(--muted); pointer-events:none; }
+    .group { margin-bottom:2.8rem; }
+    .group:last-child { margin-bottom:0; }
+    .group-label { font-size:.62rem; font-weight:700; letter-spacing:.18em; text-transform:uppercase;
+      color:var(--muted); margin-bottom:.9rem; display:flex; align-items:center; gap:.6rem; }
+    .group-label::after { content:''; flex:1; height:1px; background:var(--cream-dk); }
+    .group-list { display:grid; grid-template-columns:repeat(2,1fr); gap:.4rem; }
+    .ch { display:flex; align-items:center; gap:.85rem; padding:.75rem 1rem;
+      border-radius:9px; background:transparent; border:1px solid transparent;
+      text-decoration:none; color:inherit;
+      transition:background .2s, border-color .2s, transform .2s; }
+    .ch:hover { background:var(--cream); border-color:rgba(201,168,76,.28); transform:translateX(3px); }
+    .ch.hidden { display:none; }
+    .ch-n { min-width:28px; height:28px; border-radius:6px; background:var(--teal); color:#fff;
+      display:flex; align-items:center; justify-content:center;
+      font-size:.62rem; font-weight:700; flex-shrink:0; transition:background .2s; }
+    .ch:hover .ch-n { background:var(--gold-dk); }
+    .ch-name { font-size:.82rem; font-weight:500; color:var(--soft); transition:color .25s; }
+    .no-res { display:none; grid-column:1/-1; text-align:center; padding:2rem; color:var(--muted); font-size:.85rem; }
+    .no-res.show { display:block; }
+
+    /* ═══ WORD SHOWCASE ═══ */
+    .showcase-sec { background:var(--teal-dk); position:relative; overflow:hidden; }
+    .showcase-sec::before { content:''; position:absolute; inset:0; pointer-events:none;
+      background:radial-gradient(ellipse 70% 60% at 75% 30%, rgba(13,79,79,.55) 0%, transparent 65%); }
+    .showcase-sec .si { position:relative; z-index:1; }
+    .showcase-sec .eyebrow { color:rgba(201,168,76,.7); }
+    .showcase-sec .eyebrow::before { background:rgba(201,168,76,.4); }
+    .showcase-sec .s-title { color:#fff; }
+    .showcase-sec .s-desc { color:rgba(255,255,255,.45); }
+    .showcase-actions { display:flex; align-items:center; gap:.8rem; margin-top:2rem; flex-wrap:wrap; }
+    .btn-card-mode {
+      display:inline-flex; align-items:center; gap:.5rem;
+      background:rgba(201,168,76,.14); border:1px solid rgba(201,168,76,.3);
+      border-radius:50px; padding:.55rem 1.4rem;
+      font-size:.75rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+      color:var(--gold-lt); cursor:pointer; transition:background .2s, border-color .2s; }
+    .btn-card-mode:hover { background:rgba(201,168,76,.25); border-color:rgba(201,168,76,.5); }
+    .words-list { margin-top:2.5rem; display:grid; grid-template-columns:repeat(3,1fr);
+      gap:1px; background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.06); border-radius:var(--r); overflow:hidden; }
+    .word-item { padding:1.6rem 1.5rem; background:rgba(255,255,255,.02);
+      transition:background .2s; display:flex; flex-direction:column; gap:.3rem; }
+    .word-item:hover { background:rgba(255,255,255,.05); }
+    .wi-fa { font-family:'Noto Naskh Arabic',serif; font-size:1.7rem; font-weight:700;
+      direction:rtl; color:var(--gold-lt); line-height:1.2; }
+    .wi-read { font-size:.78rem; font-style:italic; color:rgba(255,255,255,.5); }
+    .wi-tr { font-size:.88rem; color:rgba(255,255,255,.75); font-weight:500; }
+
+    /* ═══ ŞİİR ═══ */
+    .poem-sec { background:var(--teal-dk); position:relative; overflow:hidden; }
+    .poem-sec::before {
+      content:''; position:absolute; inset:0; pointer-events:none;
+      background:
+        radial-gradient(ellipse 60% 50% at 15% 20%, rgba(201,168,76,.07) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 60% at 85% 80%, rgba(13,79,79,.5) 0%, transparent 60%);
+    }
+    .poem-sec .si { position:relative; z-index:1; }
+    .poem-sec .eyebrow { color:rgba(201,168,76,.7); }
+    .poem-sec .eyebrow::before { background:rgba(201,168,76,.4); }
+    .poem-sec .s-title { color:#fff; }
+    .poem-sec .s-desc { color:rgba(255,255,255,.4); }
+
+    .poem-grid {
+      margin-top:3rem;
+      display:grid; grid-template-columns:1fr 1fr; gap:1.2rem;
+    }
+    .poem-card {
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.07);
+      border-radius:var(--r); padding:1.8rem;
+      transition:border-color .25s, transform .25s;
+    }
+    .poem-card:hover { border-color:rgba(201,168,76,.2); transform:translateY(-3px); }
+    .poem-card-wide { grid-column:1/-1; }
+
+    .poem-poet { display:flex; align-items:center; gap:.9rem; margin-bottom:1rem; }
+    .poem-poet-avatar {
+      width:42px; height:42px; border-radius:50%; flex-shrink:0;
+      background:linear-gradient(135deg, rgba(201,168,76,.25), rgba(201,168,76,.1));
+      border:1px solid rgba(201,168,76,.3);
+      display:flex; align-items:center; justify-content:center;
+      font-family:'Noto Naskh Arabic',serif; font-size:1.1rem; color:var(--gold-lt);
+    }
+    .poem-poet-name {
+      font-family:'Noto Naskh Arabic',serif;
+      font-size:.92rem; font-weight:700; color:#fff; direction:rtl;
+    }
+    .poem-poet-sub { font-size:.65rem; color:rgba(255,255,255,.35); margin-top:.15rem; }
+    .poem-source {
+      font-size:.63rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase;
+      color:rgba(201,168,76,.5); margin-bottom:1.2rem;
+      padding-bottom:.8rem; border-bottom:1px solid rgba(255,255,255,.07);
+    }
+    .poem-lines { display:flex; flex-direction:column; gap:1rem; }
+    .poem-lines-wide {
+      display:grid; grid-template-columns:1fr 1fr; gap:.8rem 2rem;
+    }
+    .poem-card-rtl { direction:rtl; }
+    .poem-card-rtl .poem-poet { flex-direction:row-reverse; }
+    .poem-card-rtl .poem-poet-sub { text-align:right; }
+    .poem-card-rtl .poem-source { text-align:right; }
+    .poem-card-rtl .poem-rd,
+    .poem-card-rtl .poem-tr { text-align:right; direction:rtl; }
+    .poem-line { display:flex; flex-direction:column; gap:.2rem; }
+    .poem-fa {
+      font-family:'Noto Naskh Arabic',serif;
+      font-size:1.08rem; font-weight:600; color:var(--gold-lt);
+      direction:rtl; line-height:1.6;
+    }
+    .poem-rd { font-size:.72rem; font-style:italic; color:rgba(255,255,255,.38); }
+    .poem-tr { font-size:.8rem; color:rgba(255,255,255,.65); line-height:1.5; }
+
+    /* ═══ AUTHOR ═══ */
+    .author-sec { background:var(--cream); transition:var(--trans); }
+    .author-box { margin-top:3rem; display:flex; gap:3.5rem; align-items:center; flex-wrap:wrap; }
+    .author-av { width:110px; height:110px; border-radius:50%; flex-shrink:0;
+      background:linear-gradient(135deg, var(--teal), var(--teal-lt));
+      display:flex; align-items:center; justify-content:center; position:relative; }
+    .author-av::after { content:''; position:absolute; inset:-5px; border-radius:50%;
+      border:1px solid rgba(201,168,76,.3); }
+    .author-av-txt { font-family:'Noto Naskh Arabic',serif; font-size:1.7rem; color:#fff; }
+    .author-body { flex:1; }
+    .author-name-fa { font-family:'Noto Naskh Arabic',serif; font-size:1.6rem; font-weight:700;
+      color:var(--teal); direction:rtl; text-align:right; }
+    .author-text { margin-top:.9rem; font-size:.9rem; color:var(--soft); line-height:1.95; max-width:520px; }
+    .author-text strong { color:var(--teal); }
+    .author-quote { margin-top:1rem; font-size:.8rem; font-style:italic;
+      color:var(--muted); padding-left:.9rem; border-left:2px solid rgba(201,168,76,.3); }
+
+    /* ═══ FOOTER ═══ */
+    footer { background:var(--teal-dk); text-align:center; padding:3rem 2rem 2.5rem;
+      border-top:1px solid rgba(255,255,255,.04); }
+    .ft-fa { font-family:'Noto Naskh Arabic',serif; font-size:1.3rem; color:var(--gold); direction:rtl; }
+    .ft-sep { width:36px; height:1px; background:rgba(201,168,76,.18); margin:1.2rem auto; }
+    .ft-copy { font-size:.68rem; color:rgba(255,255,255,.2); letter-spacing:.05em; }
+
+    /* ═══ BTT ═══ */
+    #btt { position:fixed; bottom:1.8rem; right:1.8rem; z-index:99;
+      width:42px; height:42px; border-radius:50%;
+      background:rgba(13,79,79,.8); border:1px solid rgba(201,168,76,.25);
+      backdrop-filter:blur(10px); color:#fff; font-size:.95rem; cursor:pointer;
+      display:flex; align-items:center; justify-content:center;
+      opacity:0; transform:translateY(8px); transition:opacity .3s, transform .3s, background .2s; }
+    #btt.visible { opacity:1; transform:none; }
+    #btt:hover { background:rgba(154,111,34,.8); }
+
+    /* ═══════════════════════════════════
+       MODAL OVERLAY (shared)
+    ═══════════════════════════════════ */
+    .modal-overlay {
+      position:fixed; inset:0; z-index:500;
+      background:rgba(4,16,16,.82); backdrop-filter:blur(18px);
+      display:flex; align-items:flex-start; justify-content:center;
+      padding:8vh 1.5rem 1.5rem;
+      opacity:0; visibility:hidden;
+      transition:opacity .25s, visibility .25s;
+    }
+    .modal-overlay.open { opacity:1; visibility:visible; }
+
+    /* ═══ SEARCH MODAL ═══ */
+    .search-box {
+      width:100%; max-width:620px;
+      background:var(--white); border-radius:16px;
+      overflow:hidden; box-shadow:0 32px 80px rgba(0,0,0,.45);
+      border:1px solid rgba(255,255,255,.08);
+      transition:background .25s;
+    }
+    .search-input-row {
+      display:flex; align-items:center; gap:.8rem;
+      padding:.9rem 1.2rem; border-bottom:1px solid var(--cream-dk);
+    }
+    .search-input-icon { font-size:1rem; color:var(--muted); flex-shrink:0; }
+    #globalSearch { flex:1; border:none; outline:none; font-size:1rem;
+      font-family:'Inter',sans-serif; background:transparent; color:var(--ink);
+      transition:color .25s; }
+    #globalSearch::placeholder { color:var(--muted); }
+    .search-kbd { font-size:.65rem; background:var(--cream); border:1px solid var(--cream-dk);
+      border-radius:5px; padding:.15rem .45rem; color:var(--muted); font-family:monospace; flex-shrink:0; }
+    .search-results { max-height:400px; overflow-y:auto; }
+    .search-empty { padding:2.5rem; text-align:center; color:var(--muted); font-size:.88rem; }
+    .result-item { display:flex; align-items:center; gap:1rem; padding:.9rem 1.2rem;
+      transition:background .15s; border-bottom:1px solid var(--cream-dk); }
+    .result-item:last-child { border-bottom:none; }
+    .result-item:hover, .result-item.active { background:var(--cream); }
+    .result-fa { font-family:'Noto Naskh Arabic',serif; font-size:1.4rem; font-weight:700;
+      color:var(--teal); direction:rtl; min-width:50px; text-align:right; }
+    .result-info { flex:1; }
+    .result-tr { font-size:.88rem; font-weight:600; color:var(--ink); transition:color .25s; }
+    .result-actions { display:flex; align-items:center; gap:.45rem; flex-shrink:0; }
+    .result-ch { font-size:.62rem; font-weight:700; padding:.22rem .6rem;
+      border-radius:5px; background:var(--cream); color:var(--muted);
+      letter-spacing:.06em; white-space:nowrap; transition:background .25s, color .25s;
+      text-decoration:none; }
+    .result-ch:hover { background:var(--teal); color:#fff; }
+    .result-vj { font-size:.62rem; font-weight:700; padding:.22rem .6rem;
+      border-radius:5px; background:rgba(13,79,79,.08); color:var(--teal);
+      letter-spacing:.05em; white-space:nowrap; text-decoration:none; border:1px solid rgba(13,79,79,.15); }
+    .result-vj:hover { background:var(--teal); color:#fff; border-color:var(--teal); }
+    .search-footer { padding:.65rem 1.2rem; border-top:1px solid var(--cream-dk);
+      font-size:.65rem; color:var(--muted); display:flex; gap:1.2rem; }
+    .search-footer kbd { font-size:.62rem; background:var(--cream); border:1px solid var(--cream-dk);
+      border-radius:4px; padding:.1rem .35rem; font-family:monospace; }
+
+    /* ═══ FLASHCARD MODAL ═══ */
+    .fc-wrap {
+      display:flex; flex-direction:column; align-items:center; gap:1.5rem;
+      width:100%; max-width:460px;
+    }
+    .fc-header { width:100%; display:flex; align-items:center; gap:.8rem; flex-wrap:wrap; }
+    .fc-cat-select {
+      flex:1; padding:.45rem .8rem; border-radius:8px;
+      border:1px solid rgba(255,255,255,.15); background:rgba(255,255,255,.08);
+      color:#fff; font-size:.78rem; font-family:'Inter',sans-serif; outline:none; cursor:pointer;
+    }
+    .fc-cat-select option { background:#0d3535; color:#fff; }
+    .fc-prog { font-size:.78rem; color:rgba(255,255,255,.5); font-weight:600;
+      background:rgba(255,255,255,.07); border-radius:6px; padding:.3rem .7rem; white-space:nowrap; }
+    .fc-close { background:none; border:1px solid rgba(255,255,255,.15);
+      border-radius:8px; width:34px; height:34px; color:rgba(255,255,255,.5);
+      font-size:.9rem; cursor:pointer; display:flex; align-items:center; justify-content:center;
+      transition:background .2s, color .2s; }
+    .fc-close:hover { background:rgba(255,255,255,.1); color:#fff; }
+
+    /* card flip */
+    .fc-scene { width:420px; max-width:calc(100vw - 3rem); height:230px; perspective:1000px; }
+    .fc-card { width:100%; height:100%; position:relative;
+      transform-style:preserve-3d; transition:transform .55s cubic-bezier(.4,0,.2,1); cursor:pointer; }
+    .fc-card.flipped { transform:rotateY(180deg); }
+    .fc-face { position:absolute; inset:0; border-radius:16px;
+      display:flex; flex-direction:column; align-items:center; justify-content:center;
+      gap:.6rem; backface-visibility:hidden; -webkit-backface-visibility:hidden; }
+    .fc-front { background:linear-gradient(135deg, #0d4f4f, #1a7070); }
+    .fc-back  { background:linear-gradient(135deg, #9a6f22, #c9a84c); transform:rotateY(180deg); }
+    .fc-fa-word { font-family:'Noto Naskh Arabic',serif; font-size:2.8rem; font-weight:700;
+      color:#fff; direction:rtl; line-height:1.2; }
+    .fc-read   { font-size:.9rem; font-style:italic; color:rgba(255,255,255,.7); }
+    .fc-hint   { font-size:.62rem; letter-spacing:.15em; text-transform:uppercase;
+      color:rgba(255,255,255,.3); margin-top:.4rem; }
+    .fc-tr-word { font-size:1.9rem; font-weight:700; color:#0a1a0a; }
+    .fc-cat-tag { font-size:.7rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
+      color:rgba(0,0,0,.45); background:rgba(0,0,0,.1); border-radius:5px; padding:.2rem .6rem; }
+
+    .fc-nav { display:flex; align-items:center; gap:.8rem; }
+    .fc-nav-btn { width:48px; height:48px; border-radius:50%;
+      background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.15);
+      color:#fff; font-size:1.1rem; cursor:pointer;
+      display:flex; align-items:center; justify-content:center;
+      transition:background .2s, border-color .2s; }
+    .fc-nav-btn:hover { background:rgba(255,255,255,.2); border-color:rgba(255,255,255,.3); }
+    .fc-flip-btn { padding:.7rem 2rem; border-radius:50px;
+      background:rgba(201,168,76,.2); border:1px solid rgba(201,168,76,.35);
+      color:var(--gold-lt); font-size:.8rem; font-weight:700; letter-spacing:.08em;
+      text-transform:uppercase; cursor:pointer; transition:background .2s; }
+    .fc-flip-btn:hover { background:rgba(201,168,76,.35); }
+    .fc-tip { font-size:.65rem; color:rgba(255,255,255,.25); letter-spacing:.1em; }
+
+    /* ═══ RESPONSIVE ═══ */
+    @media(max-width:860px){
+      .feat-header{grid-template-columns:1fr; gap:1rem}
+      .feat-grid{grid-template-columns:1fr 1fr}
+      .poem-grid{grid-template-columns:1fr}
+      .poem-card-wide{grid-column:auto}
+      .poem-lines-wide{grid-template-columns:1fr}
+      .group-list{grid-template-columns:1fr}
+      .words-list{grid-template-columns:1fr 1fr}
+      .nav-links{display:none}
+      .hbg{display:flex}
+      .stats-inner{grid-template-columns:repeat(3,1fr)}
+      .wod-divider{display:none}
+    }
+    @media(max-width:580px){
+      .feat-grid{grid-template-columns:1fr}
+      .words-list{grid-template-columns:1fr}
+      .hero-cta{flex-direction:column; align-items:center}
+      section{padding:5rem 1.5rem}
+      .stats-inner{grid-template-columns:1fr}
+      .stat{border-right:none; border-bottom:1px solid var(--cream-dk)}
+      .stat:last-child{border-bottom:none}
+      .srch{width:100%}
+      .cont-header{flex-direction:column; align-items:flex-start}
+      .fc-scene{height:200px}
+      .fc-fa-word{font-size:2.2rem}
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ MOBILE MENU ═══ -->
+<div class="mmenu" id="mmenu">
+  <a href="#hakkinda" onclick="closeMM()">Hakkında</a>
+  <a href="#icerik"   onclick="closeMM()">İçerik</a>
+  <a href="#ornekler" onclick="closeMM()">Kelimeler</a>
+  <a href="#siir"     onclick="closeMM()">Şiir</a>
+  <a href="#yazar"    onclick="closeMM()">Yazar</a>
+</div>
+
+<!-- ═══ NAV ═══ -->
+<nav id="nav">
+  <div class="nav-brand">
+    <div class="nav-brand-fa">فرهنگ فارسی و ترکی</div>
+    <div class="nav-brand-en">Farsça – Türkçe · 2026</div>
+  </div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#hakkinda">Hakkında</a></li>
+    <li><a href="#icerik">İçerik</a></li>
+    <li><a href="#ornekler">Kelimeler</a></li>
+    <li><a href="#siir">Şiir</a></li>
+    <li><a href="#yazar">Yazar</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="nav-icon" id="searchBtn" title="Kelime Ara (⌘K)">🔍</button>
+    <button class="nav-icon" id="cardBtn"   title="Kart Modu (F)">🃏</button>
+    <button class="nav-icon" id="themeBtn"  title="Tema Değiştir">🌙</button>
+    <button class="hbg" id="hbg" aria-label="Menü"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="orb orb-a"></div>
+  <div class="orb orb-b"></div>
+
+  <div class="hero-besmele">
+    <div class="besmele-ar">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيمِ</div>
+    <div class="besmele-fa">به نام خداوند بخشنده مهربان</div>
+  </div>
+
+  <div class="hero-main">
+    <div class="pill"><span class="pill-dot"></span>2026 Baskısı &nbsp;·&nbsp; چاپ ۲۰۲۶</div>
+    <div class="hero-fa">فرهنگ فارسی و ترکی</div>
+    <div class="hero-sep">
+      <div class="hero-sep-line"></div><span>◆</span><div class="hero-sep-line"></div>
+    </div>
+    <h1 class="hero-title">Farsça – Türkçe<br>Sözlük</h1>
+    <p class="hero-sub">Temel Dil Bilgisi Rehberi · A1–A2</p>
+    <div class="hero-cta">
+      <a href="#icerik"   class="btn-primary">İçeriği Keşfet</a>
+      <a href="#ornekler" class="btn-ghost">Örnek Kelimeler</a>
+    </div>
+    <div class="hero-author">
+      <div class="hero-author-line"></div>
+      <div class="hero-author-name">سید وقاص ارغوان</div>
+      <div class="hero-author-line"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ WORD OF DAY ═══ -->
+<div class="wod">
+  <div class="wod-inner">
+    <div class="wod-tag">
+      <span class="wod-tag-dot"></span>
+      <span class="wod-tag-txt">Günün Kelimesi</span>
+    </div>
+    <div class="wod-divider"></div>
+    <div class="wod-body">
+      <div class="wod-word"    id="wfa">آب</div>
+      <div class="wod-info">
+        <div class="wod-reading" id="wrd">Âb</div>
+        <div class="wod-meaning" id="wmn">Su</div>
+      </div>
+    </div>
+    <div class="wod-actions">
+      <button class="wod-next" id="wnext">Sonraki →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ STATS ═══ -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat">
+      <div class="stat-n"><span data-count="35">0</span><span class="stat-s">+</span></div>
+      <div class="stat-l">Konu Bölümü</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n"><span data-count="2000">0</span><span class="stat-s">+</span></div>
+      <div class="stat-l">Kelime & Deyim</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n" style="background:none;-webkit-text-fill-color:var(--teal);color:var(--teal);">A1<span class="stat-s" style="color:var(--gold-dk);-webkit-text-fill-color:var(--gold-dk);">–A2</span></div>
+      <div class="stat-l">Dil Seviyesi</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ FEATURES ═══ -->
+<section class="feat-sec" id="hakkinda">
+  <div class="si">
+    <div class="feat-header">
+      <div>
+        <div class="eyebrow fade">Neden Bu Sözlük?</div>
+        <h2 class="s-title fade d1">İki Dilin<br>Ortak Ruhu</h2>
+      </div>
+      <p class="s-desc fade d2">Farsça ve Türkçe asırlık bir köprüyle bağlıdır. Ortak kelimeler, benzer cümle mantığı — doğru bir rehberle öğrenmesi en keyifli dillerden biri.</p>
+    </div>
+    <div class="feat-grid">
+      <div class="feat fade d1"><div class="feat-icon">📖</div><div class="feat-title">Tematik Sözlük</div><p class="feat-desc">35 kategoride günlük hayattan sağlığa, yemekten mesleklere — akılda kalıcı sırayla düzenlenmiş.</p></div>
+      <div class="feat fade d2"><div class="feat-icon">🔤</div><div class="feat-title">Dil Bilgisi Rehberi</div><p class="feat-desc">İzafet, fiil çekimleri, zamirler; karşılaştırmalı örneklerle adım adım Türkçe açıklamalı.</p></div>
+      <div class="feat fade d3"><div class="feat-icon">📚</div><div class="feat-title">Dehkhoda & Moin</div><p class="feat-desc">Önemli kelimelerde köklü Farsça sözlük kaynaklarına doğrudan bağlantı ve tanımlar.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CONTENTS ═══ -->
+<section class="cont-sec" id="icerik">
+  <div class="si">
+    <div class="cont-header fade">
+      <div><div class="eyebrow">İçindekiler · فهرست</div><h2 class="s-title">35 Bölüm</h2></div>
+      <div class="srch"><span class="srch-ico">🔍</span><input type="text" id="srch" placeholder="Bölüm ara…" autocomplete="off" /></div>
+    </div>
+    <div id="groups">
+      <div class="group">
+        <div class="group-label">Dil Bilgisi & Temel Yapılar</div>
+        <div class="group-list">
+          <a class="ch" href="chapter-01.html"><div class="ch-n">01</div><div class="ch-name">Ön Söz · پیشگفتار</div></a>
+          <a class="ch" href="chapter-02.html"><div class="ch-n">02</div><div class="ch-name">Alfabe · الفبا</div></a>
+          <a class="ch" href="chapter-03.html"><div class="ch-n">03</div><div class="ch-name">Zamirler & Temel Yapılar</div></a>
+          <a class="ch" href="chapter-04.html"><div class="ch-n">04</div><div class="ch-name">İzafet (Tamlama)</div></a>
+          <a class="ch" href="chapter-05.html"><div class="ch-n">05</div><div class="ch-name">Fiil Çekimleri</div></a>
+          <a class="ch" href="chapter-06.html"><div class="ch-n">06</div><div class="ch-name">Olumsuz, Soru ve Diyalog</div></a>
+          <a class="ch" href="chapter-07.html"><div class="ch-n">07</div><div class="ch-name">En Sık 50 Fiil</div></a>
+          <a class="ch" href="chapter-08.html"><div class="ch-n">08</div><div class="ch-name">Kategorili Fiiller</div></a>
+          <a class="ch" href="chapter-09.html"><div class="ch-n">09</div><div class="ch-name">Aşamalı Konuşma</div></a>
+        </div>
+      </div>
+      <div class="group">
+        <div class="group-label">Konuşma & Günlük Hayat</div>
+        <div class="group-list">
+          <a class="ch" href="chapter-10.html"><div class="ch-n">10</div><div class="ch-name">Günlük Tanışma & Konuşma</div></a>
+          <a class="ch" href="chapter-11.html"><div class="ch-n">11</div><div class="ch-name">Afganistan Seyahat Rehberi</div></a>
+          <a class="ch" href="chapter-12.html"><div class="ch-n">12</div><div class="ch-name">Sayılar · اعداد</div></a>
+          <a class="ch" href="chapter-13.html"><div class="ch-n">13</div><div class="ch-name">Renkler · رنگ‌ها</div></a>
+          <a class="ch" href="chapter-14.html"><div class="ch-n">14</div><div class="ch-name">Günler & Zaman</div></a>
+          <a class="ch" href="chapter-15.html"><div class="ch-n">15</div><div class="ch-name">Yönler & Konum</div></a>
+          <a class="ch" href="chapter-16.html"><div class="ch-n">16</div><div class="ch-name">Coğrafya · جغرافیا</div></a>
+          <a class="ch" href="chapter-17.html"><div class="ch-n">17</div><div class="ch-name">Gökyüzü · آسمان</div></a>
+          <a class="ch" href="chapter-18.html"><div class="ch-n">18</div><div class="ch-name">Akraba & Dostlar</div></a>
+          <a class="ch" href="chapter-19.html"><div class="ch-n">19</div><div class="ch-name">Dini Terimler</div></a>
+        </div>
+      </div>
+      <div class="group">
+        <div class="group-label">Ev, Eşyalar & Alışveriş</div>
+        <div class="group-list">
+          <a class="ch" href="chapter-20.html"><div class="ch-n">20</div><div class="ch-name">Giyim Kuşam · لباس</div></a>
+          <a class="ch" href="chapter-21.html"><div class="ch-n">21</div><div class="ch-name">Mobilya & Ev Eşyaları</div></a>
+          <a class="ch" href="chapter-22.html"><div class="ch-n">22</div><div class="ch-name">Elektronik & Ev Aletleri</div></a>
+          <a class="ch" href="chapter-23.html"><div class="ch-n">23</div><div class="ch-name">Elektrikli Cihazlar</div></a>
+          <a class="ch" href="chapter-24.html"><div class="ch-n">24</div><div class="ch-name">İnşaat</div></a>
+          <a class="ch" href="chapter-25.html"><div class="ch-n">25</div><div class="ch-name">Kırtasiye & Ofis</div></a>
+          <a class="ch" href="chapter-26.html"><div class="ch-n">26</div><div class="ch-name">Yemek & Gıda · غذا</div></a>
+          <a class="ch" href="chapter-27.html"><div class="ch-n">27</div><div class="ch-name">Et Ürünleri · گوشت</div></a>
+          <a class="ch" href="chapter-28.html"><div class="ch-n">28</div><div class="ch-name">Hayvanlar · حیوانات</div></a>
+        </div>
+      </div>
+      <div class="group">
+        <div class="group-label">Sağlık, Meslekler & Kurumlar</div>
+        <div class="group-list">
+          <a class="ch" href="chapter-29.html"><div class="ch-n">29</div><div class="ch-name">Dış Uzuvlar</div></a>
+          <a class="ch" href="chapter-30.html"><div class="ch-n">30</div><div class="ch-name">İç Organlar</div></a>
+          <a class="ch" href="chapter-31.html"><div class="ch-n">31</div><div class="ch-name">Hastalıklar & Sağlık</div></a>
+          <a class="ch" href="chapter-32.html"><div class="ch-n">32</div><div class="ch-name">Eczane</div></a>
+          <a class="ch" href="chapter-33.html"><div class="ch-n">33</div><div class="ch-name">Meslekler & Vazifeler</div></a>
+          <a class="ch" href="chapter-34.html"><div class="ch-n">34</div><div class="ch-name">Eğitim Kurumları</div></a>
+          <a class="ch" href="chapter-35.html"><div class="ch-n">35</div><div class="ch-name">Bakanlıklar</div></a>
+        </div>
+      </div>
+    </div>
+    <div class="no-res" id="no-res">Aramanızla eşleşen bölüm bulunamadı.</div>
+  </div>
+</section>
+
+<!-- ═══ WORD SHOWCASE ═══ -->
+<section class="showcase-sec" id="ornekler">
+  <div class="si">
+    <div class="eyebrow fade">Kelime Örnekleri</div>
+    <h2 class="s-title fade d1">Günlük Hayattan<br>12 Kelime</h2>
+    <p class="s-desc fade d2">Her bölümde bu zenginlikte yüzlerce kelime sizi bekliyor.</p>
+    <div class="showcase-actions fade d3">
+      <button class="btn-card-mode" id="cardBtn2">🃏 Kart Modu ile Çalış</button>
+    </div>
+    <div class="words-list fade">
+      <div class="word-item"><div class="wi-fa">آب</div><div class="wi-read">Âb</div><div class="wi-tr">Su</div></div>
+      <div class="word-item"><div class="wi-fa">خانه</div><div class="wi-read">Hâne</div><div class="wi-tr">Ev</div></div>
+      <div class="word-item"><div class="wi-fa">دوست</div><div class="wi-read">Dust</div><div class="wi-tr">Arkadaş</div></div>
+      <div class="word-item"><div class="wi-fa">کتاب</div><div class="wi-read">Ketâb</div><div class="wi-tr">Kitap</div></div>
+      <div class="word-item"><div class="wi-fa">آسمان</div><div class="wi-read">Âsmân</div><div class="wi-tr">Gökyüzü</div></div>
+      <div class="word-item"><div class="wi-fa">دل</div><div class="wi-read">Del</div><div class="wi-tr">Gönül</div></div>
+      <div class="word-item"><div class="wi-fa">گل</div><div class="wi-read">Gol</div><div class="wi-tr">Çiçek / Gül</div></div>
+      <div class="word-item"><div class="wi-fa">ماه</div><div class="wi-read">Mâh</div><div class="wi-tr">Ay</div></div>
+      <div class="word-item"><div class="wi-fa">ستاره</div><div class="wi-read">Setâre</div><div class="wi-tr">Yıldız</div></div>
+      <div class="word-item"><div class="wi-fa">زندگی</div><div class="wi-read">Zendegi</div><div class="wi-tr">Hayat</div></div>
+      <div class="word-item"><div class="wi-fa">عشق</div><div class="wi-read">Işk</div><div class="wi-tr">Aşk</div></div>
+      <div class="word-item"><div class="wi-fa">راه</div><div class="wi-read">Râh</div><div class="wi-tr">Yol</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ŞİİR ═══ -->
+<section class="poem-sec" id="siir">
+  <div class="si">
+    <div class="eyebrow fade">Edebiyat · ادبیات</div>
+    <h2 class="s-title fade d1">Üstat Şairlerden<br>Seçki</h2>
+    <p class="s-desc fade d2">Farsça şiir, dilin ruhunu taşır. Bu dizeler hem dili hem kültürü anlamanın en güzel yoludur.</p>
+
+    <div class="poem-grid fade d3">
+
+      <!-- MEVLANA -->
+      <div class="poem-card">
+        <div class="poem-poet">
+          <div class="poem-poet-avatar">م</div>
+          <div class="poem-poet-info">
+            <div class="poem-poet-name">مولانا جلال‌الدین رومی</div>
+            <div class="poem-poet-sub">Mevlânâ Celâleddîn-i Rûmî · 1207–1273</div>
+          </div>
+        </div>
+        <div class="poem-source">Mesnevî — Defter-i Evvel</div>
+        <div class="poem-lines">
+          <div class="poem-line">
+            <div class="poem-fa">بشنو این نی چون شکایت می‌کند</div>
+            <div class="poem-rd">Bişnev în ney çon şikâyet mî-konad</div>
+            <div class="poem-tr">Dinle bu neyi, nasıl şikayet ettiğini</div>
+          </div>
+          <div class="poem-line">
+            <div class="poem-fa">از جدایی‌ها حکایت می‌کند</div>
+            <div class="poem-rd">Ez cedâyihâ hikâyet mî-konad</div>
+            <div class="poem-tr">Ayrılıklardan hikaye ettiğini dinle</div>
+          </div>
+          <div class="poem-line">
+            <div class="poem-fa">کز نیستان تا مرا ببریده‌اند</div>
+            <div class="poem-rd">Kez neystân tâ merâ bborîdehend</div>
+            <div class="poem-tr">Sazlıktan beni kopardıklarından beri</div>
+          </div>
+          <div class="poem-line">
+            <div class="poem-fa">در نفیرم مرد و زن نالیده‌اند</div>
+            <div class="poem-rd">Der nefîrem merd o zen nâlîdehend</div>
+            <div class="poem-tr">İniltimde erkek ve kadın ağlayıp durmuştur</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- HAFIZ -->
+      <div class="poem-card">
+        <div class="poem-poet">
+          <div class="poem-poet-avatar">ح</div>
+          <div class="poem-poet-info">
+            <div class="poem-poet-name">خواجه شمس‌الدین حافظ شیرازی</div>
+            <div class="poem-poet-sub">Hâce Şemsüddîn Hâfız-ı Şîrâzî · 1315–1390</div>
+          </div>
+        </div>
+        <div class="poem-source">Dîvân-ı Hâfız</div>
+        <div class="poem-lines">
+          <div class="poem-line">
+            <div class="poem-fa">الا یا أیها الساقی أدر کأساً و ناولها</div>
+            <div class="poem-rd">Elâ yâ eyyuhessâkî edir keesen ve nâvelhâ</div>
+            <div class="poem-tr">Ey saki, kadehi döndür ve sun bana</div>
+          </div>
+          <div class="poem-line">
+            <div class="poem-fa">که عشق آسان نمود اول ولی افتاد مشکل‌ها</div>
+            <div class="poem-rd">Ke ışk âsân nemud evvel velî oftâd moşkelhâ</div>
+            <div class="poem-tr">Çünkü aşk önce kolay göründü, ama sonra güçlükler baş gösterdi</div>
+          </div>
+          <div class="poem-line">
+            <div class="poem-fa">به بوی نافه‌ای کاخر صبا زان طره بگشاید</div>
+            <div class="poem-rd">Be buye nâfei kâhır sabâ zân torre bogşâyed</div>
+            <div class="poem-tr">O zülfün sabah rüzgarınca açılacağı misk kokusunu bekleyerek</div>
+          </div>
+          <div class="poem-line">
+            <div class="poem-fa">ز تاب جعد مشکینش چه خون افتاد در دل‌ها</div>
+            <div class="poem-rd">Ze tâb-e ca'd-e moşkinaş çe hun oftâd der delhâ</div>
+            <div class="poem-tr">O mis gibi kıvırcık zülfünden ne kanlar aktı gönüllere</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SADİ -->
+      <div class="poem-card poem-card-wide poem-card-rtl">
+        <div class="poem-poet">
+          <div class="poem-poet-avatar">س</div>
+          <div class="poem-poet-info">
+            <div class="poem-poet-name">شیخ مصلح‌الدین سعدی شیرازی</div>
+            <div class="poem-poet-sub">Şeyh Muslihüddîn Sa'dî-i Şîrâzî · 1210–1291</div>
+          </div>
+        </div>
+        <div class="poem-source">Bûstân · گلستان</div>
+        <div class="poem-lines poem-lines-wide">
+          <div class="poem-line">
+            <div class="poem-fa">بنی‌آدم اعضای یک پیکرند</div>
+            <div class="poem-rd">Benî âdem a'zây-e yek peykerand</div>
+            <div class="poem-tr">İnsanoğulları bir vücudun azalarıdır</div>
+          </div>
+          <div class="poem-line">
+            <div class="poem-fa">که در آفرینش ز یک گوهرند</div>
+            <div class="poem-rd">Ki der âferîneş ze yek gouherand</div>
+            <div class="poem-tr">Ki yaratılışta hepsi bir cevherdendir</div>
+          </div>
+          <div class="poem-line">
+            <div class="poem-fa">چو عضوی به درد آورد روزگار</div>
+            <div class="poem-rd">Çu uzvi be derd âvered ruzgâr</div>
+            <div class="poem-tr">Zamanın bir uzva acı verdiğinde</div>
+          </div>
+          <div class="poem-line">
+            <div class="poem-fa">دگر عضوها را نماند قرار</div>
+            <div class="poem-rd">Diger uzvhâ râ nemâned karâr</div>
+            <div class="poem-tr">Diğer uzuvlara huzur kalmaz</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FİRDEVSİ -->
+      <div class="poem-card">
+        <div class="poem-poet">
+          <div class="poem-poet-avatar">ف</div>
+          <div class="poem-poet-info">
+            <div class="poem-poet-name">ابوالقاسم فردوسی طوسی</div>
+            <div class="poem-poet-sub">Ebü'l-Kâsım Firdevsî · 940–1020</div>
+          </div>
+        </div>
+        <div class="poem-source">شاهنامه · Şehname</div>
+        <div class="poem-lines">
+          <div class="poem-line">
+            <div class="poem-fa">توانا بود هر که دانا بود</div>
+            <div class="poem-rd">Tevânâ boved her ke dânâ boved</div>
+            <div class="poem-tr">Güçlü olur her kim bilgili olur</div>
+          </div>
+          <div class="poem-line">
+            <div class="poem-fa">ز دانش دل پیر برنا بود</div>
+            <div class="poem-rd">Ze dâneş del-e pîr bernâ boved</div>
+            <div class="poem-tr">Bilgiyle yaşlı gönül gençleşir</div>
+          </div>
+          <div class="poem-line">
+            <div class="poem-fa">بسی رنج بردم در این سال سی</div>
+            <div class="poem-rd">Besî renc bordem der în sâl-e sî</div>
+            <div class="poem-tr">Bu otuz yılda çok emek çektim</div>
+          </div>
+          <div class="poem-line">
+            <div class="poem-fa">عجم زنده کردم بدین پارسی</div>
+            <div class="poem-rd">Acem zende kerdem bedîn Pârsî</div>
+            <div class="poem-tr">Acemleri bu Farsçayla diri kıldım</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ÖMER HAYYAM -->
+      <div class="poem-card">
+        <div class="poem-poet">
+          <div class="poem-poet-avatar">خ</div>
+          <div class="poem-poet-info">
+            <div class="poem-poet-name">غیاث‌الدین عمر خیام نیشابوری</div>
+            <div class="poem-poet-sub">Ömer Hayyâm-ı Nîşâbûrî · 1048–1131</div>
+          </div>
+        </div>
+        <div class="poem-source">رباعیات · Rubâîler</div>
+        <div class="poem-lines">
+          <div class="poem-line">
+            <div class="poem-fa">افسوس که نامهٔ جوانی طی شد</div>
+            <div class="poem-rd">Efsûs ke nâme-ye cevânî tay şod</div>
+            <div class="poem-tr">Yazık ki gençlik defteri kapandı</div>
+          </div>
+          <div class="poem-line">
+            <div class="poem-fa">وان تازه بهار زندگانی طی شد</div>
+            <div class="poem-rd">V-ân tâze bahâr-e zendegânî tay şod</div>
+            <div class="poem-tr">O taze hayat baharı da geçti gitti</div>
+          </div>
+          <div class="poem-line">
+            <div class="poem-fa">آن مرغ طرب که نام او بود شباب</div>
+            <div class="poem-rd">Ân morğ-e tareb ke nâm-e u bud şebâb</div>
+            <div class="poem-tr">O neşe kuşu ki adı gençlikti</div>
+          </div>
+          <div class="poem-line">
+            <div class="poem-fa">افسوس ندانم که کی آمد کی شد</div>
+            <div class="poem-rd">Efsûs nedânem ke key âmad key şod</div>
+            <div class="poem-tr">Yazık, bilmiyorum ne zaman geldi ne zaman gitti</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CAMİ -->
+      <div class="poem-card">
+        <div class="poem-poet">
+          <div class="poem-poet-avatar">ج</div>
+          <div class="poem-poet-info">
+            <div class="poem-poet-name">نورالدین عبدالرحمان جامی</div>
+            <div class="poem-poet-sub">Nûrüddîn Abdurrahmân Câmî · 1414–1492</div>
+          </div>
+        </div>
+        <div class="poem-source">نعت · Na't — در مدح حضرت رسول ﷺ</div>
+        <div class="poem-lines">
+          <div class="poem-line">
+            <div class="poem-fa">یا رسول الله چه باشد چون سگ اصحاب کهف</div>
+            <div class="poem-rd">Yâ Resûlallah! Çi bâşed çün seg-i Ashâb-ı Kehf</div>
+            <div class="poem-tr">Ya Resûlallah! Ashab-ı Kehf'in köpeği gibi ne olur</div>
+          </div>
+          <div class="poem-line">
+            <div class="poem-fa">دخل جنت شوم در زمرۀ اصحاب تو</div>
+            <div class="poem-rd">Dahil-i cennet şevem der zümre-i ashâb-ı tû</div>
+            <div class="poem-tr">Senin ashabının arasında Cennete gireyim</div>
+          </div>
+          <div class="poem-line">
+            <div class="poem-fa">او رود در جنت من در جهنم کی رواست</div>
+            <div class="poem-rd">O reved der cennet, men der cehennem key revâst?</div>
+            <div class="poem-tr">O Cennete gitsin ben Cehenneme, reva mıdır?</div>
+          </div>
+          <div class="poem-line">
+            <div class="poem-fa">او سگ اصحاب کهف من سگ اصحاب تو</div>
+            <div class="poem-rd">O seg-i Ashâb-ı Kehf, men seg-i ashâb-ı tû</div>
+            <div class="poem-tr">O Ashab-ı Kehf'in köpeği, ben senin ashabının köpeğiyim</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ABDULLAH ENSARÎ -->
+      <div class="poem-card poem-card-wide poem-card-rtl">
+        <div class="poem-poet">
+          <div class="poem-poet-avatar">ا</div>
+          <div class="poem-poet-info">
+            <div class="poem-poet-name">خواجه عبدالله انصاری هروی</div>
+            <div class="poem-poet-sub">Hâce Abdullah Ensârî-yi Herevî · 1006–1088</div>
+          </div>
+        </div>
+        <div class="poem-source">مناجات‌نامه · Münâcatnâme</div>
+        <div class="poem-lines poem-lines-wide">
+          <div class="poem-line">
+            <div class="poem-fa">بار الها! آنچه دادی باز ده</div>
+            <div class="poem-rd">Bâr İlâhâ! Ânçe dâdî bâz deh</div>
+            <div class="poem-tr">Ey Rabbim! Verdiğini geri ver</div>
+          </div>
+          <div class="poem-line">
+            <div class="poem-fa">عمر بر باد رفته را آواز ده</div>
+            <div class="poem-rd">Umr ber bâd refte râ âvâz deh</div>
+            <div class="poem-tr">Rüzgara karışan ömrü geri çağır</div>
+          </div>
+          <div class="poem-line">
+            <div class="poem-fa">ای که هستی‌ها ز تو پیدا شده</div>
+            <div class="poem-rd">Ey ke hestîhâ ze to peydâ şode</div>
+            <div class="poem-tr">Ey bütün varlıkların senden zahir olduğu</div>
+          </div>
+          <div class="poem-line">
+            <div class="poem-fa">نیستی‌ها هم به تو زیبا شده</div>
+            <div class="poem-rd">Nîstîhâ hem be to zîbâ şode</div>
+            <div class="poem-tr">Yokluklar da seninle güzelleşmiş</div>
+          </div>
+          <div class="poem-line">
+            <div class="poem-fa">عاشقم بر قهرت و بر لطفت هم</div>
+            <div class="poem-rd">Âşıkem ber kahret o ber lütfet hem</div>
+            <div class="poem-tr">Hem gazabına hem lütfuna âşığım</div>
+          </div>
+          <div class="poem-line">
+            <div class="poem-fa">ای عجب من عاشق این هر دو هم</div>
+            <div class="poem-rd">Ey aceb men âşık-e în her do hem</div>
+            <div class="poem-tr">Ne tuhaf ki bu ikisine birden âşığım</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ AUTHOR ═══ -->
+<section class="author-sec" id="yazar">
+  <div class="si">
+    <div class="eyebrow fade">Hazırlayan</div>
+    <div class="author-box fade d1">
+      <div class="author-av"><div class="author-av-txt">وقاص</div></div>
+      <div class="author-body">
+        <div class="author-name-fa">سید وقاص ارغوان</div>
+        <p class="author-text">Bu çalışma, Farsça öğrenme yolculuğuna yeni başlayanlar için <strong>temel bir köprü</strong> olarak hazırlanmıştır. Şiir ve edebiyatın dili Farsça, Türkçeyle olan tarihsel bağı sayesinde Türk öğrenciler için öğrenmesi en keyifli dillerden biridir.<br><br>En sık kullanılan kelimeler ve yapılar bir araya getirilmiş; Dehkhoda ve Moin sözlük kaynaklarıyla desteklenmiştir.</p>
+        <div class="author-quote">"Yolunuz açık, ilminiz bol olsun."</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="ft-fa">فرهنگ فارسی و ترکی ۲۰۲۶</div>
+  <div class="ft-sep"></div>
+  <div class="ft-copy">© 2026 سید وقاص ارغوان — Tüm hakları saklıdır.</div>
+</footer>
+
+<button id="btt" aria-label="Yukarı">↑</button>
+
+<!-- ═══ SEARCH MODAL ═══ -->
+<div class="modal-overlay" id="searchModal">
+  <div class="search-box">
+    <div class="search-input-row">
+      <span class="search-input-icon">🔍</span>
+      <input type="text" id="globalSearch" placeholder="Kelime veya anlam ara… (Türkçe ya da Farsça)" autocomplete="off" spellcheck="false" />
+      <kbd class="search-kbd">ESC</kbd>
+    </div>
+    <div class="search-results" id="searchResults">
+      <div class="search-empty">Aramak istediğiniz kelimeyi yazın.</div>
+    </div>
+    <div class="search-footer">
+      <span><kbd>↑↓</kbd> Gezin</span>
+      <span><kbd>↵</kbd> Bölüme Git</span>
+      <span><kbd>ESC</kbd> Kapat</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ FLASHCARD MODAL ═══ -->
+<div class="modal-overlay" id="cardModal">
+  <div class="fc-wrap">
+    <div class="fc-header">
+      <select class="fc-cat-select" id="fcCat">
+        <option value="">Tüm Kategoriler</option>
+        <option value="Temel">Temel Kelimeler</option>
+        <option value="Zamirler">Zamirler</option>
+        <option value="Renkler">Renkler</option>
+        <option value="Sayılar">Sayılar</option>
+        <option value="Günler">Günler & Zaman</option>
+        <option value="Akraba">Akraba & Aile</option>
+        <option value="Hayvanlar">Hayvanlar</option>
+        <option value="Giyim">Giyim Kuşam</option>
+        <option value="Yemek">Yemek & Gıda</option>
+        <option value="Yönler">Yönler</option>
+        <option value="Vücut">Vücut / Uzuvlar</option>
+        <option value="Meslekler">Meslekler</option>
+      </select>
+      <span class="fc-prog" id="fcProg">1 / 30</span>
+      <button class="fc-close" id="fcClose">✕</button>
+    </div>
+    <div class="fc-scene">
+      <div class="fc-card" id="fcCard">
+        <div class="fc-face fc-front">
+          <div class="fc-fa-word" id="fcFa">آب</div>
+          <div class="fc-read"    id="fcRd">Âb</div>
+          <div class="fc-hint">Tıkla veya Space → çevir</div>
+        </div>
+        <div class="fc-face fc-back">
+          <div class="fc-tr-word" id="fcTr">Su</div>
+          <div class="fc-cat-tag" id="fcCt">Temel</div>
+        </div>
+      </div>
+    </div>
+    <div class="fc-nav">
+      <button class="fc-nav-btn" id="fcPrev">←</button>
+      <button class="fc-flip-btn" id="fcFlip">Çevir</button>
+      <button class="fc-nav-btn" id="fcNext">→</button>
+    </div>
+    <div class="fc-tip">← → ok tuşları &nbsp;·&nbsp; Space çevir &nbsp;·&nbsp; Esc kapat</div>
+  </div>
+</div>
+
+<script>
+/* ══════════════════════════════════
+   VOCABULARY DATA
+══════════════════════════════════ */
+const VOCAB = [
+  // Temel
+  {fa:'آب',rd:'Âb',tr:'Su',cat:'Temel',ch:26,cn:'Yemek & Gıda'},
+  {fa:'خانه',rd:'Hâne',tr:'Ev',cat:'Temel',ch:21,cn:'Mobilya & Ev'},
+  {fa:'دوست',rd:'Dust',tr:'Arkadaş / Dost',cat:'Temel',ch:18,cn:'Akraba & Dostlar'},
+  {fa:'کتاب',rd:'Ketâb',tr:'Kitap',cat:'Temel',ch:25,cn:'Kırtasiye & Ofis'},
+  {fa:'روز',rd:'Ruz',tr:'Gün',cat:'Günler',ch:14,cn:'Günler & Zaman'},
+  {fa:'شب',rd:'Şeb',tr:'Gece',cat:'Günler',ch:14,cn:'Günler & Zaman'},
+  {fa:'آسمان',rd:'Âsmân',tr:'Gökyüzü',cat:'Temel',ch:17,cn:'Gökyüzü'},
+  {fa:'دل',rd:'Del',tr:'Gönül / Kalp',cat:'Vücut',ch:30,cn:'İç Organlar'},
+  {fa:'گل',rd:'Gol',tr:'Çiçek / Gül',cat:'Temel',ch:16,cn:'Coğrafya'},
+  {fa:'ماه',rd:'Mâh',tr:'Ay (gök cismi)',cat:'Temel',ch:17,cn:'Gökyüzü'},
+  {fa:'ستاره',rd:'Setâre',tr:'Yıldız',cat:'Temel',ch:17,cn:'Gökyüzü'},
+  {fa:'زندگی',rd:'Zendegi',tr:'Hayat / Yaşam',cat:'Temel',ch:10,cn:'Konuşma'},
+  {fa:'عشق',rd:'Işk',tr:'Aşk',cat:'Temel',ch:10,cn:'Konuşma'},
+  {fa:'راه',rd:'Râh',tr:'Yol',cat:'Yönler',ch:15,cn:'Yönler & Konum'},
+  {fa:'دریا',rd:'Deryâ',tr:'Deniz',cat:'Temel',ch:16,cn:'Coğrafya'},
+  {fa:'آتش',rd:'Âteş',tr:'Ateş',cat:'Temel',ch:10,cn:'Temel'},
+  {fa:'باد',rd:'Bâd',tr:'Rüzgar',cat:'Temel',ch:17,cn:'Gökyüzü'},
+  {fa:'زمین',rd:'Zemin',tr:'Yer / Toprak',cat:'Temel',ch:16,cn:'Coğrafya'},
+  {fa:'درخت',rd:'Deraht',tr:'Ağaç',cat:'Temel',ch:16,cn:'Coğrafya'},
+  {fa:'نان',rd:'Nân',tr:'Ekmek',cat:'Yemek',ch:26,cn:'Yemek & Gıda'},
+  {fa:'خورشید',rd:'Hoşid',tr:'Güneş',cat:'Temel',ch:17,cn:'Gökyüzü'},
+  {fa:'آرزو',rd:'Ârezu',tr:'Dilek / Arzu',cat:'Temel',ch:10,cn:'Konuşma'},
+  {fa:'سفر',rd:'Sefer',tr:'Yolculuk / Seyahat',cat:'Temel',ch:10,cn:'Konuşma'},
+  // Zamirler
+  {fa:'من',rd:'Men',tr:'Ben',cat:'Zamirler',ch:3,cn:'Zamirler'},
+  {fa:'تو',rd:'To',tr:'Sen',cat:'Zamirler',ch:3,cn:'Zamirler'},
+  {fa:'او',rd:'U',tr:'O',cat:'Zamirler',ch:3,cn:'Zamirler'},
+  {fa:'ما',rd:'Mâ',tr:'Biz',cat:'Zamirler',ch:3,cn:'Zamirler'},
+  {fa:'شما',rd:'Şomâ',tr:'Siz',cat:'Zamirler',ch:3,cn:'Zamirler'},
+  {fa:'آنها',rd:'Ânhâ',tr:'Onlar',cat:'Zamirler',ch:3,cn:'Zamirler'},
+  // Renkler
+  {fa:'سرخ',rd:'Sorh',tr:'Kırmızı',cat:'Renkler',ch:13,cn:'Renkler'},
+  {fa:'آبی',rd:'Âbi',tr:'Mavi',cat:'Renkler',ch:13,cn:'Renkler'},
+  {fa:'سبز',rd:'Sebz',tr:'Yeşil',cat:'Renkler',ch:13,cn:'Renkler'},
+  {fa:'زرد',rd:'Zerd',tr:'Sarı',cat:'Renkler',ch:13,cn:'Renkler'},
+  {fa:'سیاه',rd:'Siyâh',tr:'Siyah',cat:'Renkler',ch:13,cn:'Renkler'},
+  {fa:'سفید',rd:'Sefid',tr:'Beyaz',cat:'Renkler',ch:13,cn:'Renkler'},
+  {fa:'خاکستری',rd:'Hâkestri',tr:'Gri',cat:'Renkler',ch:13,cn:'Renkler'},
+  {fa:'نارنجی',rd:'Nârenji',tr:'Turuncu',cat:'Renkler',ch:13,cn:'Renkler'},
+  {fa:'بنفش',rd:'Benefş',tr:'Mor',cat:'Renkler',ch:13,cn:'Renkler'},
+  {fa:'قهوه‌ای',rd:'Kahveyi',tr:'Kahverengi',cat:'Renkler',ch:13,cn:'Renkler'},
+  {fa:'صورتی',rd:'Surati',tr:'Pembe',cat:'Renkler',ch:13,cn:'Renkler'},
+  // Sayılar
+  {fa:'یک',rd:'Yek',tr:'Bir (1)',cat:'Sayılar',ch:12,cn:'Sayılar'},
+  {fa:'دو',rd:'Do',tr:'İki (2)',cat:'Sayılar',ch:12,cn:'Sayılar'},
+  {fa:'سه',rd:'Se',tr:'Üç (3)',cat:'Sayılar',ch:12,cn:'Sayılar'},
+  {fa:'چهار',rd:'Çehâr',tr:'Dört (4)',cat:'Sayılar',ch:12,cn:'Sayılar'},
+  {fa:'پنج',rd:'Penç',tr:'Beş (5)',cat:'Sayılar',ch:12,cn:'Sayılar'},
+  {fa:'شش',rd:'Şeş',tr:'Altı (6)',cat:'Sayılar',ch:12,cn:'Sayılar'},
+  {fa:'هفت',rd:'Heft',tr:'Yedi (7)',cat:'Sayılar',ch:12,cn:'Sayılar'},
+  {fa:'هشت',rd:'Heşt',tr:'Sekiz (8)',cat:'Sayılar',ch:12,cn:'Sayılar'},
+  {fa:'نه',rd:'Noh',tr:'Dokuz (9)',cat:'Sayılar',ch:12,cn:'Sayılar'},
+  {fa:'ده',rd:'Deh',tr:'On (10)',cat:'Sayılar',ch:12,cn:'Sayılar'},
+  {fa:'بیست',rd:'Bist',tr:'Yirmi (20)',cat:'Sayılar',ch:12,cn:'Sayılar'},
+  {fa:'سی',rd:'Si',tr:'Otuz (30)',cat:'Sayılar',ch:12,cn:'Sayılar'},
+  {fa:'صد',rd:'Sad',tr:'Yüz (100)',cat:'Sayılar',ch:12,cn:'Sayılar'},
+  {fa:'هزار',rd:'Hezâr',tr:'Bin (1000)',cat:'Sayılar',ch:12,cn:'Sayılar'},
+  // Günler
+  {fa:'شنبه',rd:'Şenbe',tr:'Cumartesi',cat:'Günler',ch:14,cn:'Günler & Zaman'},
+  {fa:'یکشنبه',rd:'Yekşenbe',tr:'Pazar',cat:'Günler',ch:14,cn:'Günler & Zaman'},
+  {fa:'دوشنبه',rd:'Doşenbe',tr:'Pazartesi',cat:'Günler',ch:14,cn:'Günler & Zaman'},
+  {fa:'سه‌شنبه',rd:'Seşenbe',tr:'Salı',cat:'Günler',ch:14,cn:'Günler & Zaman'},
+  {fa:'چهارشنبه',rd:'Çehârşenbe',tr:'Çarşamba',cat:'Günler',ch:14,cn:'Günler & Zaman'},
+  {fa:'پنجشنبه',rd:'Pençşenbe',tr:'Perşembe',cat:'Günler',ch:14,cn:'Günler & Zaman'},
+  {fa:'جمعه',rd:"Cum'a",tr:'Cuma',cat:'Günler',ch:14,cn:'Günler & Zaman'},
+  {fa:'صبح',rd:'Sobh',tr:'Sabah',cat:'Günler',ch:14,cn:'Günler & Zaman'},
+  {fa:'ظهر',rd:'Zohr',tr:'Öğle',cat:'Günler',ch:14,cn:'Günler & Zaman'},
+  {fa:'شام',rd:'Şâm',tr:'Akşam',cat:'Günler',ch:14,cn:'Günler & Zaman'},
+  // Akraba
+  {fa:'مادر',rd:'Mâder',tr:'Anne',cat:'Akraba',ch:18,cn:'Akraba & Dostlar'},
+  {fa:'پدر',rd:'Peder',tr:'Baba',cat:'Akraba',ch:18,cn:'Akraba & Dostlar'},
+  {fa:'برادر',rd:'Berâder',tr:'Erkek Kardeş',cat:'Akraba',ch:18,cn:'Akraba & Dostlar'},
+  {fa:'خواهر',rd:'Hâher',tr:'Kız Kardeş',cat:'Akraba',ch:18,cn:'Akraba & Dostlar'},
+  {fa:'پسر',rd:'Pesar',tr:'Oğul',cat:'Akraba',ch:18,cn:'Akraba & Dostlar'},
+  {fa:'دختر',rd:'Dohtar',tr:'Kız Çocuk',cat:'Akraba',ch:18,cn:'Akraba & Dostlar'},
+  {fa:'عمو',rd:'Amo',tr:'Amca',cat:'Akraba',ch:18,cn:'Akraba & Dostlar'},
+  {fa:'خاله',rd:'Hâle',tr:'Teyze',cat:'Akraba',ch:18,cn:'Akraba & Dostlar'},
+  {fa:'عمه',rd:'Amme',tr:'Hala',cat:'Akraba',ch:18,cn:'Akraba & Dostlar'},
+  {fa:'دایی',rd:'Dâyi',tr:'Dayı',cat:'Akraba',ch:18,cn:'Akraba & Dostlar'},
+  {fa:'شوهر',rd:'Şouher',tr:'Koca / Eş (erkek)',cat:'Akraba',ch:18,cn:'Akraba & Dostlar'},
+  {fa:'زن',rd:'Zen',tr:'Kadın / Eş',cat:'Akraba',ch:18,cn:'Akraba & Dostlar'},
+  // Hayvanlar
+  {fa:'سگ',rd:'Seg',tr:'Köpek',cat:'Hayvanlar',ch:28,cn:'Hayvanlar'},
+  {fa:'گربه',rd:'Gorbe',tr:'Kedi',cat:'Hayvanlar',ch:28,cn:'Hayvanlar'},
+  {fa:'اسب',rd:'Esb',tr:'At',cat:'Hayvanlar',ch:28,cn:'Hayvanlar'},
+  {fa:'گاو',rd:'Gâv',tr:'İnek',cat:'Hayvanlar',ch:28,cn:'Hayvanlar'},
+  {fa:'مرغ',rd:'Morğ',tr:'Tavuk',cat:'Hayvanlar',ch:28,cn:'Hayvanlar'},
+  {fa:'ماهی',rd:'Mâhi',tr:'Balık',cat:'Hayvanlar',ch:28,cn:'Hayvanlar'},
+  {fa:'پرنده',rd:'Perande',tr:'Kuş',cat:'Hayvanlar',ch:28,cn:'Hayvanlar'},
+  {fa:'شیر',rd:'Şir',tr:'Aslan',cat:'Hayvanlar',ch:28,cn:'Hayvanlar'},
+  {fa:'فیل',rd:'Fil',tr:'Fil',cat:'Hayvanlar',ch:28,cn:'Hayvanlar'},
+  {fa:'گرگ',rd:'Gorg',tr:'Kurt',cat:'Hayvanlar',ch:28,cn:'Hayvanlar'},
+  {fa:'گوسفند',rd:'Gusefend',tr:'Koyun',cat:'Hayvanlar',ch:28,cn:'Hayvanlar'},
+  {fa:'خرس',rd:'Hors',tr:'Ayı',cat:'Hayvanlar',ch:28,cn:'Hayvanlar'},
+  // Giyim
+  {fa:'پیراهن',rd:'Pirâhen',tr:'Gömlek',cat:'Giyim',ch:20,cn:'Giyim Kuşam'},
+  {fa:'شلوار',rd:'Şalvâr',tr:'Pantolon',cat:'Giyim',ch:20,cn:'Giyim Kuşam'},
+  {fa:'کفش',rd:'Kefş',tr:'Ayakkabı',cat:'Giyim',ch:20,cn:'Giyim Kuşam'},
+  {fa:'کلاه',rd:'Kolâh',tr:'Şapka',cat:'Giyim',ch:20,cn:'Giyim Kuşam'},
+  {fa:'کت',rd:'Ket',tr:'Ceket',cat:'Giyim',ch:20,cn:'Giyim Kuşam'},
+  {fa:'جوراب',rd:'Cevrâb',tr:'Çorap',cat:'Giyim',ch:20,cn:'Giyim Kuşam'},
+  {fa:'لباس',rd:'Lebâs',tr:'Kıyafet / Elbise',cat:'Giyim',ch:20,cn:'Giyim Kuşam'},
+  // Yemek
+  {fa:'برنج',rd:'Bereç',tr:'Pirinç',cat:'Yemek',ch:26,cn:'Yemek & Gıda'},
+  {fa:'گوشت',rd:'Goşt',tr:'Et',cat:'Yemek',ch:27,cn:'Et Ürünleri'},
+  {fa:'سبزی',rd:'Sebzi',tr:'Sebze',cat:'Yemek',ch:26,cn:'Yemek & Gıda'},
+  {fa:'میوه',rd:'Mive',tr:'Meyve',cat:'Yemek',ch:26,cn:'Yemek & Gıda'},
+  {fa:'تخم‌مرغ',rd:'Tohm-e morğ',tr:'Yumurta',cat:'Yemek',ch:26,cn:'Yemek & Gıda'},
+  {fa:'شیر',rd:'Şir',tr:'Süt',cat:'Yemek',ch:26,cn:'Yemek & Gıda'},
+  {fa:'چای',rd:'Çây',tr:'Çay',cat:'Yemek',ch:26,cn:'Yemek & Gıda'},
+  {fa:'نمک',rd:'Nemek',tr:'Tuz',cat:'Yemek',ch:26,cn:'Yemek & Gıda'},
+  {fa:'روغن',rd:'Rouğen',tr:'Yağ',cat:'Yemek',ch:26,cn:'Yemek & Gıda'},
+  {fa:'قند',rd:'Kand',tr:'Şeker',cat:'Yemek',ch:26,cn:'Yemek & Gıda'},
+  // Yönler
+  {fa:'شمال',rd:'Şomâl',tr:'Kuzey',cat:'Yönler',ch:15,cn:'Yönler & Konum'},
+  {fa:'جنوب',rd:'Cenub',tr:'Güney',cat:'Yönler',ch:15,cn:'Yönler & Konum'},
+  {fa:'شرق',rd:'Şark',tr:'Doğu',cat:'Yönler',ch:15,cn:'Yönler & Konum'},
+  {fa:'غرب',rd:'Ğarb',tr:'Batı',cat:'Yönler',ch:15,cn:'Yönler & Konum'},
+  {fa:'بالا',rd:'Bâlâ',tr:'Yukarı',cat:'Yönler',ch:15,cn:'Yönler & Konum'},
+  {fa:'پایین',rd:'Pâyin',tr:'Aşağı',cat:'Yönler',ch:15,cn:'Yönler & Konum'},
+  {fa:'چپ',rd:'Çep',tr:'Sol',cat:'Yönler',ch:15,cn:'Yönler & Konum'},
+  {fa:'راست',rd:'Râst',tr:'Sağ',cat:'Yönler',ch:15,cn:'Yönler & Konum'},
+  // Vücut
+  {fa:'سر',rd:'Ser',tr:'Baş',cat:'Vücut',ch:29,cn:'Dış Uzuvlar'},
+  {fa:'چشم',rd:'Çeşm',tr:'Göz',cat:'Vücut',ch:29,cn:'Dış Uzuvlar'},
+  {fa:'گوش',rd:'Guş',tr:'Kulak',cat:'Vücut',ch:29,cn:'Dış Uzuvlar'},
+  {fa:'دهان',rd:'Dehân',tr:'Ağız',cat:'Vücut',ch:29,cn:'Dış Uzuvlar'},
+  {fa:'بینی',rd:'Bini',tr:'Burun',cat:'Vücut',ch:29,cn:'Dış Uzuvlar'},
+  {fa:'دست',rd:'Dest',tr:'El',cat:'Vücut',ch:29,cn:'Dış Uzuvlar'},
+  {fa:'پا',rd:'Pâ',tr:'Ayak',cat:'Vücut',ch:29,cn:'Dış Uzuvlar'},
+  {fa:'قلب',rd:'Kalb',tr:'Kalp',cat:'Vücut',ch:30,cn:'İç Organlar'},
+  {fa:'مغز',rd:'Meğz',tr:'Beyin',cat:'Vücut',ch:30,cn:'İç Organlar'},
+  {fa:'معده',rd:"Me'de",tr:'Mide',cat:'Vücut',ch:30,cn:'İç Organlar'},
+  // Meslekler
+  {fa:'دکتر',rd:'Doktor',tr:'Doktor',cat:'Meslekler',ch:33,cn:'Meslekler'},
+  {fa:'معلم',rd:"Mo'allem",tr:'Öğretmen',cat:'Meslekler',ch:33,cn:'Meslekler'},
+  {fa:'مهندس',rd:'Mohandes',tr:'Mühendis',cat:'Meslekler',ch:33,cn:'Meslekler'},
+  {fa:'پلیس',rd:'Polis',tr:'Polis',cat:'Meslekler',ch:33,cn:'Meslekler'},
+  {fa:'آشپز',rd:'Âşpaz',tr:'Aşçı',cat:'Meslekler',ch:33,cn:'Meslekler'},
+  {fa:'راننده',rd:'Rânnende',tr:'Sürücü',cat:'Meslekler',ch:33,cn:'Meslekler'},
+  {fa:'کشاورز',rd:'Keşâverz',tr:'Çiftçi',cat:'Meslekler',ch:33,cn:'Meslekler'},
+  {fa:'پرستار',rd:'Perestâr',tr:'Hemşire',cat:'Meslekler',ch:33,cn:'Meslekler'},
+];
+
+/* ══════════════════════════════════
+   NAV & SCROLL
+══════════════════════════════════ */
+const NAV_H = 64;
+const nav   = document.getElementById('nav');
+const btt   = document.getElementById('btt');
+const nls   = document.querySelectorAll('#navLinks a');
+const secs  = document.querySelectorAll('section[id]');
+
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', scrollY > 40);
+  btt.classList.toggle('visible',  scrollY > 500);
+  let cur = '';
+  secs.forEach(s => { if (s.getBoundingClientRect().top <= NAV_H + 30) cur = s.id; });
+  nls.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + cur));
+}, { passive:true });
+
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const el = document.getElementById(a.getAttribute('href').slice(1));
+    if (!el) return; e.preventDefault();
+    window.scrollTo({ top: el.getBoundingClientRect().top + scrollY - NAV_H, behavior:'smooth' });
+  });
+});
+btt.addEventListener('click', () => window.scrollTo({ top:0, behavior:'smooth' }));
+
+/* hamburger */
+const hbg = document.getElementById('hbg');
+const mm  = document.getElementById('mmenu');
+hbg.addEventListener('click', () => {
+  const o = mm.classList.toggle('open');
+  hbg.classList.toggle('open', o);
+  document.body.style.overflow = o ? 'hidden' : '';
+});
+function closeMM() { mm.classList.remove('open'); hbg.classList.remove('open'); document.body.style.overflow=''; }
+document.querySelectorAll('.mmenu a').forEach(a => a.addEventListener('click', closeMM));
+
+/* ══════════════════════════════════
+   DARK MODE
+══════════════════════════════════ */
+const themeBtn  = document.getElementById('themeBtn');
+const htmlEl    = document.documentElement;
+const savedTheme = localStorage.getItem('theme') || 'light';
+htmlEl.dataset.theme = savedTheme;
+themeBtn.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+
+themeBtn.addEventListener('click', () => {
+  const next = htmlEl.dataset.theme === 'dark' ? 'light' : 'dark';
+  htmlEl.dataset.theme = next;
+  localStorage.setItem('theme', next);
+  themeBtn.textContent = next === 'dark' ? '☀️' : '🌙';
+});
+
+
+/* ══════════════════════════════════
+   WORD OF DAY
+══════════════════════════════════ */
+const WORDS = VOCAB.filter((_,i) => i % 4 === 0).concat(VOCAB.filter((_,i) => i % 4 !== 0)).slice(0,30);
+const doy   = Math.floor((new Date() - new Date(new Date().getFullYear(),0,0)) / 86400000);
+let wi = doy % WORDS.length;
+const wbody = document.querySelector('.wod-body');
+
+function setWod(animate) {
+  const w = WORDS[wi];
+  const set = () => {
+    document.getElementById('wfa').textContent = w.fa;
+    document.getElementById('wrd').textContent = w.rd;
+    document.getElementById('wmn').textContent = w.tr;
+  };
+  if (animate) {
+    wbody.style.transition='none'; wbody.style.opacity='0'; wbody.style.transform='translateX(8px)';
+    setTimeout(() => {
+      set();
+      wbody.style.transition='opacity .3s, transform .3s';
+      wbody.style.opacity='1'; wbody.style.transform='none';
+    }, 140);
+  } else set();
+}
+setWod(false);
+document.getElementById('wnext').addEventListener('click', () => { wi=(wi+1)%WORDS.length; setWod(true); });
+
+/* ══════════════════════════════════
+   STATS COUNTER
+══════════════════════════════════ */
+let counted = false;
+new IntersectionObserver(en => {
+  if (en[0].isIntersecting && !counted) {
+    counted = true;
+    document.querySelectorAll('[data-count]').forEach(el => {
+      const t = +el.dataset.count; let s = null;
+      requestAnimationFrame(function raf(ts) {
+        if (!s) s = ts;
+        const p = Math.min((ts-s)/1300, 1);
+        el.textContent = Math.floor((1-Math.pow(1-p,3))*t);
+        if (p<1) requestAnimationFrame(raf); else el.textContent = t;
+      });
+    });
+  }
+}, { threshold:.3 }).observe(document.querySelector('.stats'));
+
+/* ══════════════════════════════════
+   FADE OBSERVER
+══════════════════════════════════ */
+const fadeObs = new IntersectionObserver(
+  en => en.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }),
+  { threshold:.1 }
+);
+document.querySelectorAll('.fade').forEach(el => fadeObs.observe(el));
+
+/* ══════════════════════════════════
+   CHAPTER SEARCH
+══════════════════════════════════ */
+const srchEl = document.getElementById('srch');
+const chEls  = document.querySelectorAll('.ch');
+const noRes  = document.getElementById('no-res');
+const grpEls = document.querySelectorAll('.group');
+
+srchEl.addEventListener('input', () => {
+  const q = srchEl.value.toLowerCase().trim();
+  let total = 0;
+  chEls.forEach(el => {
+    const m = !q || el.textContent.toLowerCase().includes(q);
+    el.classList.toggle('hidden', !m);
+    if (m) total++;
+  });
+  grpEls.forEach(g => {
+    const any = [...g.querySelectorAll('.ch')].some(c => !c.classList.contains('hidden'));
+    g.style.display = any ? '' : 'none';
+  });
+  noRes.classList.toggle('show', q && total === 0);
+});
+
+/* ══════════════════════════════════
+   GLOBAL SEARCH MODAL
+══════════════════════════════════ */
+const searchModal = document.getElementById('searchModal');
+const globalSearch = document.getElementById('globalSearch');
+const searchResults = document.getElementById('searchResults');
+let activeIdx = -1;
+
+function openSearch() {
+  searchModal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  setTimeout(() => globalSearch.focus(), 50);
+}
+function closeSearch() {
+  searchModal.classList.remove('open');
+  document.body.style.overflow = '';
+  globalSearch.value = '';
+  searchResults.innerHTML = '<div class="search-empty">Aramak istediğiniz kelimeyi yazın.</div>';
+  activeIdx = -1;
+}
+
+document.getElementById('searchBtn').addEventListener('click', openSearch);
+searchModal.addEventListener('click', e => { if(e.target === searchModal) closeSearch(); });
+
+document.addEventListener('keydown', e => {
+  if ((e.metaKey || e.ctrlKey) && e.key === 'k') { e.preventDefault(); openSearch(); }
+  if (e.key === 'Escape') {
+    if (searchModal.classList.contains('open')) closeSearch();
+    if (cardModal.classList.contains('open'))   closeCard();
+  }
+  if (searchModal.classList.contains('open')) {
+    const items = searchResults.querySelectorAll('.result-item');
+    if (e.key === 'ArrowDown') { e.preventDefault(); activeIdx=Math.min(activeIdx+1,items.length-1); highlightResult(items); }
+    if (e.key === 'ArrowUp')   { e.preventDefault(); activeIdx=Math.max(activeIdx-1,0); highlightResult(items); }
+    if (e.key === 'Enter' && activeIdx >= 0 && items[activeIdx]) {
+      const link = items[activeIdx].querySelector('.result-ch');
+      if (link) link.click();
+    }
+  }
+});
+
+function highlightResult(items) {
+  items.forEach((el,i) => el.classList.toggle('active', i === activeIdx));
+  if (items[activeIdx]) items[activeIdx].scrollIntoView({ block:'nearest' });
+}
+
+const SEARCH_DB = (typeof FULL_VOCAB !== 'undefined') ? FULL_VOCAB : VOCAB;
+
+globalSearch.addEventListener('input', () => {
+  const q = globalSearch.value.trim();
+  const ql = q.toLowerCase();
+  activeIdx = -1;
+  if (!q) { searchResults.innerHTML = '<div class="search-empty">Aramak istediğiniz kelimeyi yazın.</div>'; return; }
+
+  const hits = SEARCH_DB.filter(w =>
+    w.fa.includes(q) ||
+    w.tr.toLowerCase().includes(ql) ||
+    (w.cn && w.cn.toLowerCase().includes(ql))
+  ).slice(0, 12);
+
+  if (!hits.length) {
+    searchResults.innerHTML = '<div class="search-empty">Sonuç bulunamadı.</div>'; return;
+  }
+
+  searchResults.innerHTML = hits.map(w => {
+    const chHref = w.href || `chapter-${String(w.ch).padStart(2,'0')}.html`;
+    const vjUrl  = `https://www.vajehyab.com/?q=${encodeURIComponent(w.fa)}&dic=dehkhoda`;
+    return `
+    <div class="result-item">
+      <div class="result-fa">${w.fa}</div>
+      <div class="result-info">
+        <div class="result-tr">${w.tr}</div>
+      </div>
+      <div class="result-actions">
+        <a class="result-ch" href="${chHref}" title="${w.cn}">${w.cn}</a>
+        <a class="result-vj" href="${vjUrl}" target="_blank" rel="noopener" title="Dehkhoda'da Aç">vajehyab ↗</a>
+      </div>
+    </div>`;
+  }).join('');
+
+  // re-bind keyboard nav to new items
+  activeIdx = -1;
+});
+
+/* ══════════════════════════════════
+   FLASHCARD MODAL
+══════════════════════════════════ */
+const cardModal = document.getElementById('cardModal');
+const fcCard    = document.getElementById('fcCard');
+const fcCat     = document.getElementById('fcCat');
+let fcDeck = [], fcIdx = 0, fcFlipped = false;
+
+function buildDeck() {
+  const cat = fcCat.value;
+  fcDeck = cat ? VOCAB.filter(w => w.cat === cat) : [...VOCAB];
+  fcIdx = 0; fcFlipped = false;
+  renderCard();
+}
+function renderCard() {
+  if (!fcDeck.length) return;
+  const w = fcDeck[fcIdx];
+  fcCard.classList.remove('flipped');
+  fcFlipped = false;
+  setTimeout(() => {
+    document.getElementById('fcFa').textContent = w.fa;
+    document.getElementById('fcRd').textContent = w.rd;
+    document.getElementById('fcTr').textContent = w.tr;
+    document.getElementById('fcCt').textContent = w.cat;
+    document.getElementById('fcProg').textContent = `${fcIdx+1} / ${fcDeck.length}`;
+  }, fcFlipped ? 0 : 0);
+}
+function flipCard() {
+  fcFlipped = !fcFlipped;
+  fcCard.classList.toggle('flipped', fcFlipped);
+}
+function openCard() {
+  buildDeck();
+  cardModal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeCard() {
+  cardModal.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+[document.getElementById('cardBtn'), document.getElementById('cardBtn2')].forEach(b => b.addEventListener('click', openCard));
+document.getElementById('fcClose').addEventListener('click', closeCard);
+cardModal.addEventListener('click', e => { if(e.target === cardModal) closeCard(); });
+document.getElementById('fcFlip').addEventListener('click', flipCard);
+fcCard.addEventListener('click', flipCard);
+document.getElementById('fcPrev').addEventListener('click', () => {
+  fcIdx = (fcIdx - 1 + fcDeck.length) % fcDeck.length; renderCard();
+});
+document.getElementById('fcNext').addEventListener('click', () => {
+  fcIdx = (fcIdx + 1) % fcDeck.length; renderCard();
+});
+fcCat.addEventListener('change', buildDeck);
+
+document.addEventListener('keydown', e => {
+  if (!cardModal.classList.contains('open')) return;
+  if (e.key === ' ')           { e.preventDefault(); flipCard(); }
+  if (e.key === 'ArrowRight')  { fcIdx=(fcIdx+1)%fcDeck.length; renderCard(); }
+  if (e.key === 'ArrowLeft')   { fcIdx=(fcIdx-1+fcDeck.length)%fcDeck.length; renderCard(); }
+});
+</script>
+</body>
+</html>

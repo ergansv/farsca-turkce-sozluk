@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bölüm 31: Hastalıklar & Sağlık — Farsça–Türkçe Sözlük</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600&family=Noto+Naskh+Arabic:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --gold: #c9a84c; --gold-lt: #e8c97a; --gold-dk: #9a6f22;
+  --teal: #0d4f4f; --teal-lt: #145f5f; --teal-dk: #082d2d;
+  --cream: #fdf8f0; --cream-dk: #f5ede0;
+  --ink: #1a1410; --ink-soft: #4a3728; --muted: #8a7465;
+  --white: #fff; --radius: 10px;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; background: var(--cream); color: var(--ink); line-height: 1.7; }
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(8,45,45,.97); backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(201,168,76,.25);
+  padding: .9rem 2rem;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo { font-family: 'Noto Naskh Arabic', serif; color: var(--gold); font-size: 1.1rem; text-decoration: none; }
+.nav-title { font-size: .72rem; color: rgba(255,255,255,.5); letter-spacing: .08em; text-transform: uppercase; }
+.nav-right { display: flex; align-items: center; gap: 1rem; }
+.nav-back {
+  color: rgba(255,255,255,.7); text-decoration: none; font-size: .8rem;
+  font-weight: 500; letter-spacing: .05em; text-transform: uppercase;
+  transition: color .2s;
+}
+.nav-back:hover { color: var(--gold-lt); }
+.chapter-nav { display: flex; gap: .5rem; }
+.ch-btn {
+  background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15);
+  color: rgba(255,255,255,.7); border-radius: 6px; padding: .35rem .85rem;
+  font-size: .78rem; font-weight: 600; text-decoration: none; transition: all .2s;
+  cursor: pointer;
+}
+.ch-btn:hover { background: rgba(201,168,76,.2); border-color: rgba(201,168,76,.4); color: var(--gold-lt); }
+.ch-btn.disabled { opacity: .3; pointer-events: none; }
+.hero-ch {
+  background: linear-gradient(135deg, var(--teal-dk), var(--teal));
+  padding: 3.5rem 2rem 2.5rem;
+  text-align: center;
+}
+.ch-num { font-size: .75rem; font-weight: 700; letter-spacing: .15em; color: var(--gold-lt); text-transform: uppercase; margin-bottom: .8rem; }
+.ch-title { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem,4vw,2.8rem); font-weight: 900; color: var(--white); }
+.ch-title-fa { font-family: 'Noto Naskh Arabic', serif; font-size: 1.4rem; color: rgba(255,255,255,.6); margin-top: .4rem; direction: rtl; }
+.content { max-width: 900px; margin: 3rem auto; padding: 0 2rem 5rem; }
+.section-head {
+  font-size: .75rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--gold-dk); background: var(--cream-dk);
+  padding: .6rem 1.2rem; border-radius: 8px; margin: 2rem 0 1rem;
+  border-left: 3px solid var(--gold);
+}
+.word-table { width: 100%; border-collapse: collapse; margin-bottom: .5rem; }
+.word-table th {
+  background: var(--teal); color: var(--white);
+  font-size: .7rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+  padding: .6rem 1.1rem; text-align: left;
+}
+.word-table th:last-child { text-align: right; }
+.word-table td {
+  padding: .65rem 1.1rem; border-bottom: 1px solid var(--cream-dk);
+  font-size: .9rem; color: var(--ink-soft);
+  vertical-align: middle;
+}
+.word-table tr:last-child td { border-bottom: none; }
+.word-table tr:hover td { background: var(--white); }
+.td-fa {
+  font-family: 'Noto Naskh Arabic', serif; font-size: 1.15rem; font-weight: 600;
+  color: var(--teal); direction: rtl; text-align: right;
+}
+.td-note { font-size: .8rem; color: var(--muted); font-style: italic; }
+.text-block {
+  background: var(--white); border: 1px solid var(--cream-dk);
+  border-radius: var(--radius); padding: 1.2rem 1.5rem;
+  font-size: .9rem; color: var(--ink-soft); line-height: 1.8;
+  margin: .5rem 0;
+}
+.card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px,1fr)); gap: .75rem; margin: 1rem 0; }
+.card {
+  background: var(--white); border: 1px solid var(--cream-dk);
+  border-radius: var(--radius); padding: 1rem 1.2rem;
+  display: flex; flex-direction: column; align-items: center; gap: .4rem;
+  transition: border-color .2s, transform .2s;
+  text-align: center;
+}
+.card:hover { border-color: rgba(201,168,76,.4); transform: translateY(-2px); }
+.card-fa { font-family: 'Noto Naskh Arabic', serif; font-size: 1.5rem; font-weight: 700; color: var(--teal); direction: rtl; }
+.card-tr { font-size: .85rem; color: var(--ink-soft); font-weight: 500; }
+.card-note { font-size: .72rem; color: var(--muted); }
+.search-wrap { position: relative; margin-bottom: 1.5rem; }
+.search-icon { position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--muted); pointer-events: none; }
+#word-search {
+  width: 100%; padding: .8rem 1rem .8rem 2.8rem;
+  border: 1.5px solid var(--cream-dk); border-radius: 10px;
+  font-size: .9rem; font-family: 'Inter', sans-serif;
+  background: var(--white); outline: none; transition: border-color .2s;
+}
+#word-search:focus { border-color: var(--teal); }
+.count-badge { position: absolute; right: 1rem; top: 50%; transform: translateY(-50%); font-size: .72rem; color: var(--muted); font-weight: 600; }
+.row-hidden { display: none !important; }
+@media(max-width:600px) { .card-grid { grid-template-columns: 1fr 1fr; } }
+
+    /* ─── BACK BUTTON ─── */
+    #back-btn {
+      position: fixed;
+      bottom: 2rem; left: 2rem;
+      display: flex; align-items: center; gap: .5rem;
+      background: var(--teal);
+      border: 1px solid rgba(201,168,76,.35);
+      color: var(--white);
+      font-size: .8rem; font-weight: 600;
+      letter-spacing: .06em; text-transform: uppercase;
+      padding: .65rem 1.2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      box-shadow: 0 4px 16px rgba(0,0,0,.25);
+      transition: background .2s, transform .2s, box-shadow .2s;
+      z-index: 99;
+    }
+    #back-btn:hover {
+      background: var(--gold-dk);
+      transform: translateX(-3px);
+      box-shadow: 0 6px 24px rgba(0,0,0,.3);
+    }
+    #back-btn .arrow { font-size: 1rem; }
+
+  
+    /* ─── FLOATING CHAPTER ARROWS ─── */
+    .ch-arrow-btn {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 48px; height: 48px;
+      background: var(--teal);
+      border: 1px solid rgba(201,168,76,.35);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--white);
+      font-size: 1.3rem;
+      text-decoration: none;
+      box-shadow: 0 4px 18px rgba(0,0,0,.28);
+      transition: background .2s, transform .2s, box-shadow .2s, opacity .2s;
+      z-index: 98;
+      opacity: .75;
+    }
+    .ch-arrow-btn:hover {
+      background: var(--gold-dk);
+      opacity: 1;
+      box-shadow: 0 6px 28px rgba(0,0,0,.35);
+    }
+    .ch-arrow-prev { left: .9rem; }
+    .ch-arrow-prev:hover { transform: translateY(-50%) translateX(-3px); }
+    .ch-arrow-next { right: .9rem; }
+    .ch-arrow-next:hover { transform: translateY(-50%) translateX(3px); }
+    .ch-arrow-btn.disabled { opacity: .2; pointer-events: none; }
+    @media(max-width:900px) {
+      .ch-arrow-btn { width: 40px; height: 40px; font-size: 1.05rem; opacity: .6; }
+      .ch-arrow-prev { left: .4rem; }
+      .ch-arrow-next { right: .4rem; }
+    }
+
+  
+    /* ─── DICTIONARY BADGES ─── */
+    .dict-refs { display: inline-flex; gap: 4px; margin-right: 6px; vertical-align: middle; }
+    .dict-link {
+      font-family: 'Inter', sans-serif;
+      font-size: .58rem; font-weight: 700; letter-spacing: .04em;
+      padding: 2px 5px; border-radius: 4px;
+      text-decoration: none; line-height: 1;
+      transition: opacity .15s;
+    }
+    .dict-link:hover { opacity: .75; }
+    .dict-link.dh { background: #1a5f5f; color: #e8c97a; }
+    .dict-link.mn { background: #7a3f00; color: #f5ede0; }
+
+    /* ─── DEFINITION TOOLTIP ─── */
+    .def-wrap { position: relative; display: inline-block; }
+    .def-icon {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 16px; height: 16px; border-radius: 50%;
+      background: rgba(201,168,76,.2); border: 1px solid rgba(201,168,76,.5);
+      color: #9a6f22; font-size: .62rem; font-weight: 700;
+      cursor: help; margin-right: 4px; flex-shrink: 0;
+      font-family: 'Inter', sans-serif; font-style: normal;
+      transition: background .2s;
+    }
+    .def-icon:hover { background: rgba(201,168,76,.45); }
+    .def-box {
+      visibility: hidden; opacity: 0;
+      position: absolute; bottom: 130%; left: 50%; transform: translateX(-50%);
+      min-width: 260px; max-width: 320px;
+      background: #082d2d; border: 1px solid rgba(201,168,76,.3);
+      border-radius: 10px; padding: .85rem 1rem;
+      z-index: 200; pointer-events: none;
+      transition: opacity .2s, visibility .2s;
+      box-shadow: 0 8px 28px rgba(0,0,0,.4);
+    }
+    .def-box::after {
+      content: '';
+      position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+      border: 6px solid transparent; border-top-color: rgba(201,168,76,.3);
+    }
+    .def-wrap:hover .def-box { visibility: visible; opacity: 1; }
+    .def-source {
+      font-size: .65rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+      color: #e8c97a; margin-bottom: .35rem; font-family: 'Inter', sans-serif;
+    }
+    .def-text {
+      font-family: 'Noto Naskh Arabic', serif; font-size: .92rem;
+      color: rgba(255,255,255,.85); line-height: 1.65; direction: rtl; text-align: right;
+    }
+
+  </style>
+</head><body>
+<nav>
+  <div>
+    <a class="nav-logo" href="index.html">فرهنگ فارسی و ترکی</a>
+    <div class="nav-title">Farsça–Türkçe Sözlük · 2026</div>
+  </div>
+  <div class="nav-right">
+    <a class="nav-back" href="index.html">← Ana Sayfa</a>
+    <div class="chapter-nav">
+      <a class="ch-btn" href="chapter-30.html">‹ Önceki</a>
+      <a class="ch-btn" href="chapter-32.html">Sonraki ›</a>
+    </div>
+  </div>
+</nav>
+<div class="hero-ch">
+  <div class="ch-num">Bölüm 31 · 47 kelime</div>
+  <div class="ch-title">Hastalıklar &amp; Sağlık</div>
+  
+</div><div style="max-width:900px;margin:2rem auto 0;padding:0 2rem;">
+  <div class="search-wrap">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="wsearch" placeholder="Kelime ara..." autocomplete="off"/>
+    <span class="count-badge" id="wcnt"></span>
+  </div>
+</div>
+<div class="content">
+<div class="text-block">بخش امراض و صحّت</div>
+<div class="section-head">GENEL DURUM &amp; BELİRTİLER</div>
+<table class="word-table"><thead><tr><th>Türkçe</th><th>Farsça / Dari</th></tr></thead><tbody>
+<tr class="wr"><td>Hasta</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=مریض&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=مریض&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>مریض</td></tr>
+<tr class="wr"><td>Hastalık</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=مریضی / مرض&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=مریضی / مرض&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>مریضی / مرض</td></tr>
+<tr class="wr"><td>Halsiz</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=بی‌حال&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=بی‌حال&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>بی‌حال</td></tr>
+<tr class="wr"><td>Halsizlik</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=بی‌حالی&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=بی‌حالی&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>بی‌حالی</td></tr>
+<tr class="wr"><td>Yorgun</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=خسته&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=خسته&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>خسته</td></tr>
+<tr class="wr"><td>Yorgunluk</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=خستگی&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=خستگی&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>خستگی</td></tr>
+<tr class="wr"><td>Takatsiz</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=بی‌طاقت&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=بی‌طاقت&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>بی‌طاقت</td></tr>
+<tr class="wr"><td>Takatsizlik</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=بی‌طاقتی&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=بی‌طاقتی&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>بی‌طاقتی</td></tr>
+<tr class="wr"><td>Titremek</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=لرزیدن&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=لرزیدن&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>لرزیدن</td></tr>
+<tr class="wr"><td>Ateş</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=تب&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=تب&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>تب</td></tr>
+<tr class="wr"><td>Üşütmek</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=سرما خوردن&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=سرما خوردن&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>سرما خوردن</td></tr>
+<tr class="wr"><td>Nefes Darlığı</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=تنگی نفس&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=تنگی نفس&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>تنگی نفس</td></tr>
+</tbody></table>
+<div class="section-head">AĞRILAR</div>
+<table class="word-table"><thead><tr><th>Türkçe</th><th>Farsça / Dari</th></tr></thead><tbody>
+<tr class="wr"><td>Baş ağrısı</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=سردرد&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=سردرد&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>سردرد</td></tr>
+<tr class="wr"><td>Diş ağrısı</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=دندان‌درد&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=دندان‌درد&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>دندان‌درد</td></tr>
+<tr class="wr"><td>Göz ağrısı</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=چشم‌درد&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=چشم‌درد&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>چشم‌درد</td></tr>
+<tr class="wr"><td>Mide ağrısı</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=معده‌درد&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=معده‌درد&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>معده‌درد</td></tr>
+<tr class="wr"><td>Böbrek ağrısı</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=گرده‌درد&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=گرده‌درد&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>گرده‌درد</td></tr>
+</tbody></table>
+<div class="section-head">İÇ HASTALIKLARI</div>
+<table class="word-table"><thead><tr><th>Türkçe</th><th>Farsça / Dari</th></tr></thead><tbody>
+<tr class="wr"><td>Tansiyon</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=فشار خون&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=فشار خون&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>فشار خون</td></tr>
+<tr class="wr"><td>Şeker (Diyabet)</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=شکر&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=شکر&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>شکر</td></tr>
+<tr class="wr"><td>Kolesterol</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=کولسترول-چربی خون&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=کولسترول-چربی خون&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>کولسترول-چربی خون</td></tr>
+<tr class="wr"><td>Kansızlık</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=کم‌خونی&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=کم‌خونی&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>کم‌خونی</td></tr>
+<tr class="wr"><td>Sarılık</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=زردی&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=زردی&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>زردی</td></tr>
+<tr class="wr"><td>İshal</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=اسهال&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=اسهال&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>اسهال</td></tr>
+<tr class="wr"><td>Kabızlık</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=قبضیت&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=قبضیت&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>قبضیت</td></tr>
+<tr class="wr"><td>Mide Bulantısı</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=دل‌بدی&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=دل‌بدی&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>دل‌بدی</td></tr>
+<tr class="wr"><td>Mide Yarası</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=زخم معده&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=زخم معده&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>زخم معده</td></tr>
+<tr class="wr"><td>Böbrek Taşı</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=سنگ گرده&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=سنگ گرده&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>سنگ گرده</td></tr>
+</tbody></table>
+<div class="section-head">BULAŞICI &amp; CİDDİ HASTALIKLAR</div>
+<table class="word-table"><thead><tr><th>Türkçe</th><th>Farsça / Dari</th></tr></thead><tbody>
+<tr class="wr"><td>Nezle</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=زکام&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=زکام&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>زکام</td></tr>
+<tr class="wr"><td>Çiçek Hastalığı</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=آبله&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=آبله&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>آبله</td></tr>
+<tr class="wr"><td>Verem</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=سل&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=سل&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>سل</td></tr>
+<tr class="wr"><td>Kanser</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=سرطان&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=سرطان&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>سرطان</td></tr>
+<tr class="wr"><td>Sara Hastalığı</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=میرگی&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=میرگی&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>میرگی</td></tr>
+</tbody></table>
+<div class="section-head">SİNİR SİSTEMİ &amp; RUH SAĞLIĞI</div>
+<table class="word-table"><thead><tr><th>Türkçe</th><th>Farsça / Dari</th></tr></thead><tbody>
+<tr class="wr"><td>Felç</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=فلج&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=فلج&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>فلج</td></tr>
+<tr class="wr"><td>Kalp Krizi</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=سکته قلبی&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=سکته قلبی&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>سکته قلبی</td></tr>
+<tr class="wr"><td>Beyin Kanaması</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=سکته مغزی&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=سکته مغزی&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>سکته مغزی</td></tr>
+<tr class="wr"><td>Asabi Hastalıklar</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=امراض عصبی&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=امراض عصبی&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>امراض عصبی</td></tr>
+<tr class="wr"><td>Delilik</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=دیوانگی&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=دیوانگی&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>دیوانگی</td></tr>
+<tr class="wr"><td>Dil Tutulması (Kekemelik)</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=لکنت زبان&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=لکنت زبان&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>لکنت زبان</td></tr>
+</tbody></table>
+<div class="section-head">DUYU KAYIPLARI &amp; ENGELLER</div>
+<table class="word-table"><thead><tr><th>Türkçe</th><th>Farsça / Dari</th></tr></thead><tbody>
+<tr class="wr"><td>Körlük</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=کوری&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=کوری&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>کوری</td></tr>
+<tr class="wr"><td>Sağırlık</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=کری&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=کری&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>کری</td></tr>
+<tr class="wr"><td>Dilsiz / Lal</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=لال&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=لال&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>لال</td></tr>
+<tr class="wr"><td>Şaşılık</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=لوچی&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=لوچی&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>لوچی</td></tr>
+<tr class="wr"><td>Sakatlık</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=معلولیت&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=معلولیت&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>معلولیت</td></tr>
+<tr class="wr"><td>Yara</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=زخم&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=زخم&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>زخم</td></tr>
+<tr class="wr"><td>Yaralanmak</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=زخمی شدن&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=زخمی شدن&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>زخمی شدن</td></tr>
+<tr class="wr"><td>Yanıklık</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=سوختگی&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=سوختگی&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>سوختگی</td></tr>
+<tr class="wr"><td>Öksürmek</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=سرفه کردن&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=سرفه کردن&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>سرفه کردن</td></tr>
+</tbody></table>
+</div>
+
+<script>
+const inp = document.getElementById('wsearch');
+const cnt = document.getElementById('wcnt');
+if(inp){
+  inp.addEventListener('input',()=>{
+    const q = inp.value.toLowerCase().trim();
+    let v=0;
+    document.querySelectorAll('.wr').forEach(r=>{
+      const m = !q || r.textContent.toLowerCase().includes(q);
+      r.style.display = m ? '' : 'none';
+      if(m) v++;
+    });
+    cnt.textContent = q ? v+' sonuç' : '';
+  });
+}
+</script>
+
+<a id="back-btn" href="index.html"><span class="arrow">←</span> Ana Sayfa</a>
+
+<a class="ch-arrow-btn ch-arrow-prev" href="chapter-30.html" title="Önceki Bölüm">&#8592;</a>
+<a class="ch-arrow-btn ch-arrow-next" href="chapter-32.html" title="Sonraki Bölüm">&#8594;</a>
+
+</body></html>

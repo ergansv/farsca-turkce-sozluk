@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bölüm 26: Yemek & Gıda — Farsça–Türkçe Sözlük</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600&family=Noto+Naskh+Arabic:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --gold: #c9a84c; --gold-lt: #e8c97a; --gold-dk: #9a6f22;
+  --teal: #0d4f4f; --teal-lt: #145f5f; --teal-dk: #082d2d;
+  --cream: #fdf8f0; --cream-dk: #f5ede0;
+  --ink: #1a1410; --ink-soft: #4a3728; --muted: #8a7465;
+  --white: #fff; --radius: 10px;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; background: var(--cream); color: var(--ink); line-height: 1.7; }
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(8,45,45,.97); backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(201,168,76,.25);
+  padding: .9rem 2rem;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo { font-family: 'Noto Naskh Arabic', serif; color: var(--gold); font-size: 1.1rem; text-decoration: none; }
+.nav-title { font-size: .72rem; color: rgba(255,255,255,.5); letter-spacing: .08em; text-transform: uppercase; }
+.nav-right { display: flex; align-items: center; gap: 1rem; }
+.nav-back {
+  color: rgba(255,255,255,.7); text-decoration: none; font-size: .8rem;
+  font-weight: 500; letter-spacing: .05em; text-transform: uppercase;
+  transition: color .2s;
+}
+.nav-back:hover { color: var(--gold-lt); }
+.chapter-nav { display: flex; gap: .5rem; }
+.ch-btn {
+  background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15);
+  color: rgba(255,255,255,.7); border-radius: 6px; padding: .35rem .85rem;
+  font-size: .78rem; font-weight: 600; text-decoration: none; transition: all .2s;
+  cursor: pointer;
+}
+.ch-btn:hover { background: rgba(201,168,76,.2); border-color: rgba(201,168,76,.4); color: var(--gold-lt); }
+.ch-btn.disabled { opacity: .3; pointer-events: none; }
+.hero-ch {
+  background: linear-gradient(135deg, var(--teal-dk), var(--teal));
+  padding: 3.5rem 2rem 2.5rem;
+  text-align: center;
+}
+.ch-num { font-size: .75rem; font-weight: 700; letter-spacing: .15em; color: var(--gold-lt); text-transform: uppercase; margin-bottom: .8rem; }
+.ch-title { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem,4vw,2.8rem); font-weight: 900; color: var(--white); }
+.ch-title-fa { font-family: 'Noto Naskh Arabic', serif; font-size: 1.4rem; color: rgba(255,255,255,.6); margin-top: .4rem; direction: rtl; }
+.content { max-width: 900px; margin: 3rem auto; padding: 0 2rem 5rem; }
+.section-head {
+  font-size: .75rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--gold-dk); background: var(--cream-dk);
+  padding: .6rem 1.2rem; border-radius: 8px; margin: 2rem 0 1rem;
+  border-left: 3px solid var(--gold);
+}
+.word-table { width: 100%; border-collapse: collapse; margin-bottom: .5rem; }
+.word-table th {
+  background: var(--teal); color: var(--white);
+  font-size: .7rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+  padding: .6rem 1.1rem; text-align: left;
+}
+.word-table th:last-child { text-align: right; }
+.word-table td {
+  padding: .65rem 1.1rem; border-bottom: 1px solid var(--cream-dk);
+  font-size: .9rem; color: var(--ink-soft);
+  vertical-align: middle;
+}
+.word-table tr:last-child td { border-bottom: none; }
+.word-table tr:hover td { background: var(--white); }
+.td-fa {
+  font-family: 'Noto Naskh Arabic', serif; font-size: 1.15rem; font-weight: 600;
+  color: var(--teal); direction: rtl; text-align: right;
+}
+.td-note { font-size: .8rem; color: var(--muted); font-style: italic; }
+.text-block {
+  background: var(--white); border: 1px solid var(--cream-dk);
+  border-radius: var(--radius); padding: 1.2rem 1.5rem;
+  font-size: .9rem; color: var(--ink-soft); line-height: 1.8;
+  margin: .5rem 0;
+}
+.card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px,1fr)); gap: .75rem; margin: 1rem 0; }
+.card {
+  background: var(--white); border: 1px solid var(--cream-dk);
+  border-radius: var(--radius); padding: 1rem 1.2rem;
+  display: flex; flex-direction: column; align-items: center; gap: .4rem;
+  transition: border-color .2s, transform .2s;
+  text-align: center;
+}
+.card:hover { border-color: rgba(201,168,76,.4); transform: translateY(-2px); }
+.card-fa { font-family: 'Noto Naskh Arabic', serif; font-size: 1.5rem; font-weight: 700; color: var(--teal); direction: rtl; }
+.card-tr { font-size: .85rem; color: var(--ink-soft); font-weight: 500; }
+.card-note { font-size: .72rem; color: var(--muted); }
+.search-wrap { position: relative; margin-bottom: 1.5rem; }
+.search-icon { position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--muted); pointer-events: none; }
+#word-search {
+  width: 100%; padding: .8rem 1rem .8rem 2.8rem;
+  border: 1.5px solid var(--cream-dk); border-radius: 10px;
+  font-size: .9rem; font-family: 'Inter', sans-serif;
+  background: var(--white); outline: none; transition: border-color .2s;
+}
+#word-search:focus { border-color: var(--teal); }
+.count-badge { position: absolute; right: 1rem; top: 50%; transform: translateY(-50%); font-size: .72rem; color: var(--muted); font-weight: 600; }
+.row-hidden { display: none !important; }
+@media(max-width:600px) { .card-grid { grid-template-columns: 1fr 1fr; } }
+
+    /* ─── BACK BUTTON ─── */
+    #back-btn {
+      position: fixed;
+      bottom: 2rem; left: 2rem;
+      display: flex; align-items: center; gap: .5rem;
+      background: var(--teal);
+      border: 1px solid rgba(201,168,76,.35);
+      color: var(--white);
+      font-size: .8rem; font-weight: 600;
+      letter-spacing: .06em; text-transform: uppercase;
+      padding: .65rem 1.2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      box-shadow: 0 4px 16px rgba(0,0,0,.25);
+      transition: background .2s, transform .2s, box-shadow .2s;
+      z-index: 99;
+    }
+    #back-btn:hover {
+      background: var(--gold-dk);
+      transform: translateX(-3px);
+      box-shadow: 0 6px 24px rgba(0,0,0,.3);
+    }
+    #back-btn .arrow { font-size: 1rem; }
+
+  
+    /* ─── FLOATING CHAPTER ARROWS ─── */
+    .ch-arrow-btn {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 48px; height: 48px;
+      background: var(--teal);
+      border: 1px solid rgba(201,168,76,.35);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--white);
+      font-size: 1.3rem;
+      text-decoration: none;
+      box-shadow: 0 4px 18px rgba(0,0,0,.28);
+      transition: background .2s, transform .2s, box-shadow .2s, opacity .2s;
+      z-index: 98;
+      opacity: .75;
+    }
+    .ch-arrow-btn:hover {
+      background: var(--gold-dk);
+      opacity: 1;
+      box-shadow: 0 6px 28px rgba(0,0,0,.35);
+    }
+    .ch-arrow-prev { left: .9rem; }
+    .ch-arrow-prev:hover { transform: translateY(-50%) translateX(-3px); }
+    .ch-arrow-next { right: .9rem; }
+    .ch-arrow-next:hover { transform: translateY(-50%) translateX(3px); }
+    .ch-arrow-btn.disabled { opacity: .2; pointer-events: none; }
+    @media(max-width:900px) {
+      .ch-arrow-btn { width: 40px; height: 40px; font-size: 1.05rem; opacity: .6; }
+      .ch-arrow-prev { left: .4rem; }
+      .ch-arrow-next { right: .4rem; }
+    }
+
+  
+    /* ─── DICTIONARY BADGES ─── */
+    .dict-refs { display: inline-flex; gap: 4px; margin-right: 6px; vertical-align: middle; }
+    .dict-link {
+      font-family: 'Inter', sans-serif;
+      font-size: .58rem; font-weight: 700; letter-spacing: .04em;
+      padding: 2px 5px; border-radius: 4px;
+      text-decoration: none; line-height: 1;
+      transition: opacity .15s;
+    }
+    .dict-link:hover { opacity: .75; }
+    .dict-link.dh { background: #1a5f5f; color: #e8c97a; }
+    .dict-link.mn { background: #7a3f00; color: #f5ede0; }
+
+    /* ─── DEFINITION TOOLTIP ─── */
+    .def-wrap { position: relative; display: inline-block; }
+    .def-icon {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 16px; height: 16px; border-radius: 50%;
+      background: rgba(201,168,76,.2); border: 1px solid rgba(201,168,76,.5);
+      color: #9a6f22; font-size: .62rem; font-weight: 700;
+      cursor: help; margin-right: 4px; flex-shrink: 0;
+      font-family: 'Inter', sans-serif; font-style: normal;
+      transition: background .2s;
+    }
+    .def-icon:hover { background: rgba(201,168,76,.45); }
+    .def-box {
+      visibility: hidden; opacity: 0;
+      position: absolute; bottom: 130%; left: 50%; transform: translateX(-50%);
+      min-width: 260px; max-width: 320px;
+      background: #082d2d; border: 1px solid rgba(201,168,76,.3);
+      border-radius: 10px; padding: .85rem 1rem;
+      z-index: 200; pointer-events: none;
+      transition: opacity .2s, visibility .2s;
+      box-shadow: 0 8px 28px rgba(0,0,0,.4);
+    }
+    .def-box::after {
+      content: '';
+      position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+      border: 6px solid transparent; border-top-color: rgba(201,168,76,.3);
+    }
+    .def-wrap:hover .def-box { visibility: visible; opacity: 1; }
+    .def-source {
+      font-size: .65rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+      color: #e8c97a; margin-bottom: .35rem; font-family: 'Inter', sans-serif;
+    }
+    .def-text {
+      font-family: 'Noto Naskh Arabic', serif; font-size: .92rem;
+      color: rgba(255,255,255,.85); line-height: 1.65; direction: rtl; text-align: right;
+    }
+
+  </style>
+</head><body>
+<nav>
+  <div>
+    <a class="nav-logo" href="index.html">فرهنگ فارسی و ترکی</a>
+    <div class="nav-title">Farsça–Türkçe Sözlük · 2026</div>
+  </div>
+  <div class="nav-right">
+    <a class="nav-back" href="index.html">← Ana Sayfa</a>
+    <div class="chapter-nav">
+      <a class="ch-btn" href="chapter-25.html">‹ Önceki</a>
+      <a class="ch-btn" href="chapter-27.html">Sonraki ›</a>
+    </div>
+  </div>
+</nav>
+<div class="hero-ch">
+  <div class="ch-num">Bölüm 26 · 115 kelime</div>
+  <div class="ch-title">Yemek &amp; Gıda</div>
+  <div class="ch-title-fa">طعام</div>
+</div><div style="max-width:900px;margin:2rem auto 0;padding:0 2rem;">
+  <div class="search-wrap">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="wsearch" placeholder="Kelime ara..." autocomplete="off"/>
+    <span class="count-badge" id="wcnt"></span>
+  </div>
+</div>
+<div class="content">
+<div class="text-block">بخش طعام – Yemek Bölümü</div>
+<div class="text-block">Sebze- سبزیجات</div>
+<table class="word-table"><thead><tr><th>Türkçe</th><th>Farsça / Dari</th></tr></thead><tbody>
+<tr class="wr"><td>Patates</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=کچالو&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=کچالو&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>کچالو</td></tr>
+<tr class="wr"><td>Domates</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=رومی&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=رومی&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>رومی</td></tr>
+<tr class="wr"><td>Soğan</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=پیاز&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=پیاز&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>پیاز</td></tr>
+<tr class="wr"><td>Çay</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=چای&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=چای&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>چای</td></tr>
+<tr class="wr"><td>Havuç</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=زردک&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=زردک&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>زردک</td></tr>
+<tr class="wr"><td>Patlıcan</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=بادنجان سیاه&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=بادنجان سیاه&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>بادنجان سیاه</td></tr>
+<tr class="wr"><td>Salatalık</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=بادرنگ&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=بادرنگ&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>بادرنگ</td></tr>
+<tr class="wr"><td>Tuz</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=نمک&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=نمک&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>نمک</td></tr>
+<tr class="wr"><td>Şeker</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=شکر&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=شکر&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>شکر</td></tr>
+<tr class="wr"><td>Sarımsak</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=سیر&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=سیر&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>سیر</td></tr>
+<tr class="wr"><td>Biber</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=مرچ&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=مرچ&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>مرچ</td></tr>
+<tr class="wr"><td>Kırmızıbiber</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=مرچ سرخ&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=مرچ سرخ&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>مرچ سرخ</td></tr>
+<tr class="wr"><td>Karabiber</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=مرچ سیاه&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=مرچ سیاه&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>مرچ سیاه</td></tr>
+<tr class="wr"><td>Nane</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=نعنا&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=نعنا&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>نعنا</td></tr>
+<tr class="wr"><td>Limon</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=لیمو&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=لیمو&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>لیمو</td></tr>
+<tr class="wr"><td>Ispanak</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=پالک&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=پالک&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>پالک</td></tr>
+<tr class="wr"><td>Bamya</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=بامیه&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=بامیه&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>بامیه</td></tr>
+<tr class="wr"><td>Fasulye</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=لوبیا&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=لوبیا&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>لوبیا</td></tr>
+<tr class="wr"><td>Nohut</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=نخود&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=نخود&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>نخود</td></tr>
+<tr class="wr"><td>Bezelye</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=نخود سبز&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=نخود سبز&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>نخود سبز</td></tr>
+<tr class="wr"><td>Mantar</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=سمارق&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=سمارق&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>سمارق</td></tr>
+<tr class="wr"><td>Karnabahar</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=گلپی&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=گلپی&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>گلپی</td></tr>
+<tr class="wr"><td>Lahana</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=کلم&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=کلم&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>کلم</td></tr>
+<tr class="wr"><td>Marul</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=کاهو&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=کاهو&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>کاهو</td></tr>
+<tr class="wr"><td>Maydanoz</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=جعفری&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=جعفری&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>جعفری</td></tr>
+<tr class="wr"><td>Yeşil Soğan</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=پیازچه&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=پیازچه&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>پیازچه</td></tr>
+<tr class="wr"><td>Dolmalık Biber</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=مرچ دلمه&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=مرچ دلمه&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>مرچ دلمه</td></tr>
+<tr class="wr"><td>Meyve Suyu</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=جوس – آب میوه&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=جوس – آب میوه&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>جوس – آب میوه</td></tr>
+<tr class="wr"><td>Şalgam Turpu</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=شلغم&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=شلغم&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>شلغم</td></tr>
+<tr class="wr"><td>Kış Kabağı</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=کدوگرد&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=کدوگرد&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>کدوگرد</td></tr>
+<tr class="wr"><td>Taze Kabak</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=کدو&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=کدو&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>کدو</td></tr>
+<tr class="wr"><td>Yeşil Biber</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=مرچ تازه&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=مرچ تازه&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>مرچ تازه</td></tr>
+<tr class="wr"><td>Şeker Kamışı</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=نیشکر&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=نیشکر&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>نیشکر</td></tr>
+<tr class="wr"><td>Turp</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=مولی سفید&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=مولی سفید&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>مولی سفید</td></tr>
+<tr class="wr"><td>Kırmızı Turp</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=مولی سرخک&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=مولی سرخک&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>مولی سرخک</td></tr>
+<tr class="wr"><td>Yeşil Fasulye</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=فاصولیه سبز&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=فاصولیه سبز&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>فاصولیه سبز</td></tr>
+<tr class="wr"><td>Şeker Pancarı</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=لبلبو&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=لبلبو&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>لبلبو</td></tr>
+<tr class="wr"><td>Baharat</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=مصاله&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=مصاله&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>مصاله</td></tr>
+<tr class="wr"><td>Kimyon</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=زیره&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=زیره&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>زیره</td></tr>
+<tr class="wr"><td>İçecek-Meşrubat</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=نوشابه - مشروبات&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=نوشابه - مشروبات&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>نوشابه - مشروبات</td></tr>
+</tbody></table>
+<div class="text-block">میوه تازه – وخشک</div>
+<table class="word-table"><thead><tr><th>Türkçe</th><th>Farsça / Dari</th></tr></thead><tbody>
+<tr class="wr"><td>Üzüm</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=انگور&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=انگور&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>انگور</td></tr>
+<tr class="wr"><td>Elma</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=سیب&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=سیب&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>سیب</td></tr>
+<tr class="wr"><td>Muz</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=موز&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=موز&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>موز</td></tr>
+<tr class="wr"><td>Portakal</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=نارنج / مالته&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=نارنج / مالته&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>نارنج / مالته</td></tr>
+<tr class="wr"><td>Mandalina</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=کینو&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=کینو&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>کینو</td></tr>
+<tr class="wr"><td>Nar</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=انار&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=انار&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>انار</td></tr>
+<tr class="wr"><td>Kavun</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=خربوزه&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=خربوزه&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>خربوزه</td></tr>
+<tr class="wr"><td>Karpuz</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=تربوز&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=تربوز&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>تربوز</td></tr>
+<tr class="wr"><td>Armut</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=ناک&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=ناک&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>ناک</td></tr>
+<tr class="wr"><td>Erik</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=آلو&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=آلو&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>آلو</td></tr>
+<tr class="wr"><td>Şeftali</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=شفتالو&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=شفتالو&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>شفتالو</td></tr>
+<tr class="wr"><td>Kayısı</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=زردآلو&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=زردآلو&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>زردآلو</td></tr>
+<tr class="wr"><td>Kiraz</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=گیلاس&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=گیلاس&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>گیلاس</td></tr>
+<tr class="wr"><td>Vişne</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=آلوبالو&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=آلوبالو&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>آلوبالو</td></tr>
+<tr class="wr"><td>Yeşil Erik</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=آلوچه&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=آلوچه&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>آلوچه</td></tr>
+<tr class="wr"><td>Ayva</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=بهی&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=بهی&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>بهی</td></tr>
+<tr class="wr"><td>İncir</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=انجیر&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=انجیر&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>انجیر</td></tr>
+<tr class="wr"><td>Dut</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=توت&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=توت&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>توت</td></tr>
+<tr class="wr"><td>Kara Dut</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=شاه‌ توت&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=شاه‌ توت&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>شاه‌ توت</td></tr>
+<tr class="wr"><td>Mango</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=امبه&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=امبه&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>امبه</td></tr>
+<tr class="wr"><td>Hurma</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=خرما&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=خرما&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>خرما</td></tr>
+<tr class="wr"><td>Kuru Üzüm</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=کشمش&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=کشمش&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>کشمش</td></tr>
+<tr class="wr"><td>Çekirdeksiz Kuru Üzüm</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=کشمش بی‌دانه&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=کشمش بی‌دانه&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>کشمش بی‌دانه</td></tr>
+</tbody></table>
+<div class="text-block">مغزها و خشکبار (Kuruyemişler)</div>
+<table class="word-table"><thead><tr><th>Türkçe</th><th>Farsça / Dari</th></tr></thead><tbody>
+<tr class="wr"><td>Fıstık</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=پسته&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=پسته&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>پسته</td></tr>
+<tr class="wr"><td>Badem</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=بادام&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=بادام&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>بادام</td></tr>
+<tr class="wr"><td>Ceviz</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=چهارمغز&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=چهارمغز&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>چهارمغز</td></tr>
+<tr class="wr"><td>Yer Fıstığı</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=ممپلی&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=ممپلی&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>ممپلی</td></tr>
+<tr class="wr"><td>Çam Fıstığı</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=جلغوزه&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=جلغوزه&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>جلغوزه</td></tr>
+<tr class="wr"><td>Hindistan Cevizi</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=ناریل&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=ناریل&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>ناریل</td></tr>
+<tr class="wr"><td>Çekirdek (Ay çekirdeği)</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=تخم آفتابگردان&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=تخم آفتابگردان&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>تخم آفتابگردان</td></tr>
+</tbody></table>
+<div class="section-head">HUBUBAT / DANEجات (حبوبات / دانهجات)</div>
+<table class="word-table"><thead><tr><th>Türkçe</th><th>Farsça / Dari</th></tr></thead><tbody>
+<tr class="wr"><td>Buğday</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=گندم&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=گندم&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>گندم</td></tr>
+<tr class="wr"><td>Pirinç</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=برنج&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=برنج&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>برنج</td></tr>
+<tr class="wr"><td>Mısır</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=جواری&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=جواری&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>جواری</td></tr>
+<tr class="wr"><td>Nohut</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=نخود&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=نخود&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>نخود</td></tr>
+<tr class="wr"><td>Mercimek</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=نسک&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=نسک&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>نسک</td></tr>
+<tr class="wr"><td>Fasulye</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=لوبیا&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=لوبیا&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>لوبیا</td></tr>
+<tr class="wr"><td>Arpa</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=جو&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=جو&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>جو</td></tr>
+<tr class="wr"><td>Susam</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=کنجد&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=کنجد&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>کنجد</td></tr>
+<tr class="wr"><td>Haşhaş</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=خشخاش&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=خشخاش&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>خشخاش</td></tr>
+</tbody></table>
+<div class="text-block">🍞 Günlük Temel Gıdalar</div>
+<table class="word-table"><thead><tr><th>Türkçe</th><th>Farsça / Dari</th></tr></thead><tbody>
+<tr class="wr"><td>Ekmek</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=نان&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=نان&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span><span class="def-wrap"><span class="def-icon">i</span><div class="def-box"><div class="def-source">Dehkhoda</div><div class="def-text">خوراک پختهٔ از آرد؛ خبز. در ادب نماد روزی و معاش.</div></div></span>نان</td></tr>
+<tr class="wr"><td>Beyaz Ekmek</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=نان سفید&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=نان سفید&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>نان سفید</td></tr>
+<tr class="wr"><td>Buğday Ekmeği</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=نان گندم&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=نان گندم&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>نان گندم</td></tr>
+<tr class="wr"><td>Arpa Ekmeği</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=نان جو&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=نان جو&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>نان جو</td></tr>
+<tr class="wr"><td>Mısır Ekmeği</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=نان جواری&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=نان جواری&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>نان جواری</td></tr>
+<tr class="wr"><td>Yumurta</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=تخم‌مرغ&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=تخم‌مرغ&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>تخم‌مرغ</td></tr>
+</tbody></table>
+<div class="section-head">Ana Yemekler</div>
+<table class="word-table"><thead><tr><th>Türkçe</th><th>Farsça / Dari</th></tr></thead><tbody>
+<tr class="wr"><td>Yahni / Haşlama</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=یخنی&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=یخنی&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>یخنی</td></tr>
+<tr class="wr"><td>Kebap</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=کباب&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=کباب&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>کباب</td></tr>
+<tr class="wr"><td>Kuzu Kebabı</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=کباب بره&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=کباب بره&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>کباب بره</td></tr>
+<tr class="wr"><td>Köfte</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=کوفته&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=کوفته&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>کوفته</td></tr>
+<tr class="wr"><td>Mantı</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=منتو&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=منتو&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>منتو</td></tr>
+<tr class="wr"><td>Makarna</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=ماکارونی&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=ماکارونی&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>ماکارونی</td></tr>
+<tr class="wr"><td>Kızarmış Balık</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=ماهی بریان&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=ماهی بریان&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>ماهی بریان</td></tr>
+<tr class="wr"><td>Mantar Yemeği</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=قورمهٔ سمارق&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=قورمهٔ سمارق&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>قورمهٔ سمارق</td></tr>
+<tr class="wr"><td>Yoğurtlu Kızartma</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=بادنجان برانی&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=بادنجان برانی&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>بادنجان برانی</td></tr>
+<tr class="wr"><td>Mercimek Çorbası</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=سوپ عدس&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=سوپ عدس&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>سوپ عدس</td></tr>
+</tbody></table>
+<div class="text-block">🥩 Et ve Et Ürünleri</div>
+<table class="word-table"><thead><tr><th>Türkçe</th><th>Farsça / Dari</th></tr></thead><tbody>
+<tr class="wr"><td>Kıyma</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=قیمه&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=قیمه&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>قیمه</td></tr>
+<tr class="wr"><td>Kıyma Eti</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=گوشت قیمه&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=گوشت قیمه&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>گوشت قیمه</td></tr>
+<tr class="wr"><td>Sucuk</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=ساسیج&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=ساسیج&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>ساسیج</td></tr>
+</tbody></table>
+<div class="text-block">🥗 Yan Yiyecekler ve Eşlikçiler</div>
+<table class="word-table"><thead><tr><th>Türkçe</th><th>Farsça / Dari</th></tr></thead><tbody>
+<tr class="wr"><td>Salata</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=سالاد&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=سالاد&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>سالاد</td></tr>
+<tr class="wr"><td>Turşu</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=آچار&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=آچار&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>آچار</td></tr>
+<tr class="wr"><td>Sandviç</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=ساندویچ&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=ساندویچ&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>ساندویچ</td></tr>
+<tr class="wr"><td>Sirke</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=سرکه&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=سرکه&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>سرکه</td></tr>
+</tbody></table>
+<div class="text-block">🧁 Tatlı ve Fırın Ürünleri</div>
+<table class="word-table"><thead><tr><th>Türkçe</th><th>Farsça / Dari</th></tr></thead><tbody>
+<tr class="wr"><td>Tatlı</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=شیرینی&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=شیرینی&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>شیرینی</td></tr>
+<tr class="wr"><td>Kek</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=کیک&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=کیک&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>کیک</td></tr>
+<tr class="wr"><td>Pasta</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=کیک عروسی&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=کیک عروسی&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>کیک عروسی</td></tr>
+<tr class="wr"><td>Kuru Pasta</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=کلچه&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=کلچه&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>کلچه</td></tr>
+</tbody></table>
+<div class="text-block">🥛 Süt Ürünleri (لبنیات)</div>
+<table class="word-table"><thead><tr><th>Türkçe</th><th>Farsça / Dari</th></tr></thead><tbody>
+<tr class="wr"><td>Süt Ürünleri</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=لبنیات&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=لبنیات&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>لبنیات</td></tr>
+<tr class="wr"><td>Kaymak</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=قیماق&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=قیماق&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>قیماق</td></tr>
+<tr class="wr"><td>Tereyağı</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=مسکه&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=مسکه&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>مسکه</td></tr>
+<tr class="wr"><td>Peynir</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=پنیر&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=پنیر&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>پنیر</td></tr>
+<tr class="wr"><td>Kurutulmuş Yoğurt</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=قروت&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=قروت&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>قروت</td></tr>
+<tr class="wr"><td>Süzme Yoğurt</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=چکه&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=چکه&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>چکه</td></tr>
+<tr class="wr"><td>Süt</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=شیر&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=شیر&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>شیر</td></tr>
+<tr class="wr"><td>Yoğurt</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=ماست&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=ماست&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>ماست</td></tr>
+<tr class="wr"><td>Ayran</td><td class="td-fa"><span class="dict-refs"><a class="dict-link dh" href="https://www.vajehyab.com/?q=دوغ&dic=dehkhoda" target="_blank" rel="noopener" title="Dehkhoda'da aç">DH</a><a class="dict-link mn" href="https://www.vajehyab.com/?q=دوغ&dic=moin" target="_blank" rel="noopener" title="Moin'de aç">M</a></span>دوغ</td></tr>
+</tbody></table>
+</div>
+
+<script>
+const inp = document.getElementById('wsearch');
+const cnt = document.getElementById('wcnt');
+if(inp){
+  inp.addEventListener('input',()=>{
+    const q = inp.value.toLowerCase().trim();
+    let v=0;
+    document.querySelectorAll('.wr').forEach(r=>{
+      const m = !q || r.textContent.toLowerCase().includes(q);
+      r.style.display = m ? '' : 'none';
+      if(m) v++;
+    });
+    cnt.textContent = q ? v+' sonuç' : '';
+  });
+}
+</script>
+
+<a id="back-btn" href="index.html"><span class="arrow">←</span> Ana Sayfa</a>
+
+<a class="ch-arrow-btn ch-arrow-prev" href="chapter-25.html" title="Önceki Bölüm">&#8592;</a>
+<a class="ch-arrow-btn ch-arrow-next" href="chapter-27.html" title="Sonraki Bölüm">&#8594;</a>
+
+</body></html>
